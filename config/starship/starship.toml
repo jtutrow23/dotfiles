@@ -1,0 +1,19 @@
+format = """
+$all
+$character
+"""
+
+[username]
+show_always = true
+style_user = "green bold"
+style_root = "red bold"
+
+[hostname]
+ssh_only = true
+format = "[$hostname]($style) "
+
+[git_branch]
+symbol = "🌱 "
+
+[git_status]
+format = "([$all_status]($style) )"
