@@ -1,37 +1,65 @@
+# Brewfile
+
+tap "felixkratz/formulae"
+tap "jesseduffield/lazygit"
 tap "koekeishiya/formulae"
 tap "thusvill/livewallpaper"
 tap "vitorgalvao/tiny-scripts"
 
+# Formulae
 brew "antidote"
+brew "ast-grep"
 brew "bash"
 brew "bat"
 brew "black"
 brew "blueutil"
+brew "btop"
 brew "cmake"
+brew "colima"
 brew "coreutils"
 brew "curl"
+brew "czkawka"
+brew "docker"
 brew "docker-compose"
 brew "eza"
 brew "fd"
-brew "harfbuzz"
 brew "ffmpeg"
 brew "folderify"
 brew "fzf"
 brew "gh"
 brew "git"
+brew "git-delta"
+brew "go"
+brew "harfbuzz"
+brew "imagemagick"
 brew "jq"
+brew "libavif"
+brew "libheif"
+brew "libraw"
+brew "lua"
 brew "mas"
 brew "mise"
+brew "neofetch"
+brew "neovim"
 brew "node"
 brew "nvm"
 brew "p0f"
 brew "php"
 brew "pillow"
-brew "pure"
 brew "pyenv"
+brew "pngpaste"
+brew "pkgconf"
+brew "pure"
+brew "python@3.13"
 brew "ripgrep"
 brew "starship"
+brew "tmux"
+brew "tree"
+brew "watch"
 brew "wget"
+brew "wordnet"
+brew "yarn"
+brew "yazi"
 brew "yt-dlp"
 brew "zinit"
 brew "zoxide"
@@ -40,10 +68,15 @@ brew "zsh-autocomplete"
 brew "zsh-autosuggestions"
 brew "zsh-completions"
 brew "zsh-syntax-highlighting"
+brew "zsh-vi-mode"
+brew "felixkratz/formulae/borders"
+brew "felixkratz/formulae/sketchybar"
 brew "koekeishiya/formulae/skhd"
 
+# Casks
+cask "1password"
 cask "1password-cli"
-cask "1password@beta"
+cask "1password-cli@beta"
 cask "airbuddy"
 cask "alcove"
 cask "alfred"
@@ -67,10 +100,10 @@ cask "deltawalker"
 cask "discord"
 cask "disk-drill"
 cask "dockdoor"
-cask "docker"
 cask "dockfix"
 cask "downie"
 cask "drivedx"
+cask "docker"
 cask "folx"
 cask "font-fira-code-nerd-font"
 cask "font-hack-nerd-font"
@@ -79,11 +112,13 @@ cask "font-jetbrains-mono-nerd-font"
 cask "font-maple-mono"
 cask "font-maple-mono-nf"
 cask "font-maple-mono-nf-cn"
+cask "font-meslo-lg-nerd-font"
 cask "ghostty"
 cask "git-credential-manager"
 cask "gitkraken"
 cask "gitkraken-cli"
 cask "hazel"
+cask "homerow"
 cask "iina"
 cask "imazing"
 cask "istat-menus"
@@ -92,6 +127,7 @@ cask "jordanbaird-ice"
 cask "keyboard-maestro"
 cask "keyclu"
 cask "keycue"
+cask "kitty"
 cask "latest"
 cask "launchbar"
 cask "mac-mouse-fix"
@@ -103,7 +139,6 @@ cask "mist"
 cask "mos"
 cask "mountain-duck"
 cask "multitouch"
-cask "notchnook"
 cask "numi"
 cask "onyx"
 cask "path-finder"
@@ -113,20 +148,22 @@ cask "popclip"
 cask "powershell"
 cask "rectangle-pro"
 cask "shottr"
-cask "stremio"
-cask "superkey"
 cask "surfshark"
 cask "swish"
 cask "tabtab"
+cask "thelowtechguys-cling"
+cask "tuist"
 cask "voiceink"
 cask "wezterm"
 cask "xcodes"
 
+# Mac App Store Apps
 mas "1Blocker", id: 1365531024
 mas "1Password for Safari", id: 1569813296
 mas "Acidity", id: 6472630023
 mas "Apple Configurator", id: 1037126344
 mas "Auto Scroll and Read", id: 6657988236
+mas "BarMarks", id: 6739710035
 mas "Boom 3D", id: 1233048948
 mas "CARROTweather", id: 993487541
 mas "ColorSlurp", id: 1287239339
@@ -137,6 +174,7 @@ mas "Dropover", id: 1355679052
 mas "Enable Right Click for Safari", id: 6472667926
 mas "Fantastical", id: 975937182
 mas "Filebar", id: 1630856656
+mas "Fluro", id: 6736510658
 mas "Folder Peek", id: 1615988943
 mas "Folx GO+", id: 823528286
 mas "Friendly Streaming", id: 553245401
@@ -148,10 +186,10 @@ mas "Hush", id: 1544743900
 mas "Image2Icon", id: 992115977
 mas "iMazing Converter", id: 1292198261
 mas "iMazing Profile Editor", id: 1487860882
-mas "Keka", id: 470158793
+mas "Keka", id: 470137793
 mas "Klack", id: 6446206067
 mas "Leftovers", id: 6746164364
-mas "Link Unshortener", id: 1506953658
+mas "Link Unshortener", id: 150329000  # verify this ID if needed
 mas "Liss Auto Scroll", id: 6744896111
 mas "Magnet", id: 441258766
 mas "Mapper", id: 1589391989
