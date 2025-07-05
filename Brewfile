@@ -1,0 +1,199 @@
+tap "koekeishiya/formulae"
+tap "thusvill/livewallpaper"
+tap "vitorgalvao/tiny-scripts"
+
+brew "antidote"
+brew "bash"
+brew "bat"
+brew "black"
+brew "blueutil"
+brew "cmake"
+brew "coreutils"
+brew "curl"
+brew "docker-compose"
+brew "eza"
+brew "fd"
+brew "harfbuzz"
+brew "ffmpeg"
+brew "folderify"
+brew "fzf"
+brew "gh"
+brew "git"
+brew "jq"
+brew "mas"
+brew "mise"
+brew "node"
+brew "nvm"
+brew "p0f"
+brew "php"
+brew "pillow"
+brew "pure"
+brew "pyenv"
+brew "ripgrep"
+brew "starship"
+brew "wget"
+brew "yt-dlp"
+brew "zinit"
+brew "zoxide"
+brew "zsh"
+brew "zsh-autocomplete"
+brew "zsh-autosuggestions"
+brew "zsh-completions"
+brew "zsh-syntax-highlighting"
+brew "koekeishiya/formulae/skhd"
+
+cask "1password-cli"
+cask "1password@beta"
+cask "airbuddy"
+cask "alcove"
+cask "alfred"
+cask "antinote"
+cask "appcleaner"
+cask "badgeify"
+cask "bartender"
+cask "betterdisplay"
+cask "bettertouchtool"
+cask "blip"
+cask "boltai"
+cask "bruno"
+cask "charmstone"
+cask "cleanmymac"
+cask "cleanshot"
+cask "clop"
+cask "cork"
+cask "customshortcuts"
+cask "daisydisk"
+cask "deltawalker"
+cask "discord"
+cask "disk-drill"
+cask "dockdoor"
+cask "docker"
+cask "dockfix"
+cask "downie"
+cask "drivedx"
+cask "folx"
+cask "font-fira-code-nerd-font"
+cask "font-hack-nerd-font"
+cask "font-iosevka-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-maple-mono"
+cask "font-maple-mono-nf"
+cask "font-maple-mono-nf-cn"
+cask "ghostty"
+cask "git-credential-manager"
+cask "gitkraken"
+cask "gitkraken-cli"
+cask "hazel"
+cask "iina"
+cask "imazing"
+cask "istat-menus"
+cask "iterm2"
+cask "jordanbaird-ice"
+cask "keyboard-maestro"
+cask "keyclu"
+cask "keycue"
+cask "latest"
+cask "launchbar"
+cask "mac-mouse-fix"
+cask "maccy"
+cask "macupdater"
+cask "menubarx"
+cask "middle"
+cask "mist"
+cask "mos"
+cask "mountain-duck"
+cask "multitouch"
+cask "notchnook"
+cask "numi"
+cask "onyx"
+cask "path-finder"
+cask "pearcleaner"
+cask "permute"
+cask "popclip"
+cask "powershell"
+cask "rectangle-pro"
+cask "shottr"
+cask "stremio"
+cask "superkey"
+cask "surfshark"
+cask "swish"
+cask "tabtab"
+cask "voiceink"
+cask "wezterm"
+cask "xcodes"
+
+mas "1Blocker", id: 1365531024
+mas "1Password for Safari", id: 1569813296
+mas "Acidity", id: 6472630023
+mas "Apple Configurator", id: 1037126344
+mas "Auto Scroll and Read", id: 6657988236
+mas "Boom 3D", id: 1233048948
+mas "CARROTweather", id: 993487541
+mas "ColorSlurp", id: 1287239339
+mas "CotEditor", id: 1024640650
+mas "Deliveries", id: 290986013
+mas "DeskMinder", id: 6740942938
+mas "Dropover", id: 1355679052
+mas "Enable Right Click for Safari", id: 6472667926
+mas "Fantastical", id: 975937182
+mas "Filebar", id: 1630856656
+mas "Folder Peek", id: 1615988943
+mas "Folx GO+", id: 823528286
+mas "Friendly Streaming", id: 553245401
+mas "Full Page Screenshot for Safari", id: 6745571462
+mas "Gestimer", id: 6447125648
+mas "Glimpse", id: 1524217845
+mas "Homecoming for Mastodon", id: 1666139593
+mas "Hush", id: 1544743900
+mas "Image2Icon", id: 992115977
+mas "iMazing Converter", id: 1292198261
+mas "iMazing Profile Editor", id: 1487860882
+mas "Keka", id: 470158793
+mas "Klack", id: 6446206067
+mas "Leftovers", id: 6746164364
+mas "Link Unshortener", id: 1506953658
+mas "Liss Auto Scroll", id: 6744896111
+mas "Magnet", id: 441258766
+mas "Mapper", id: 1589391989
+mas "MarkDownload - Markdown Web Clipper", id: 1554029832
+mas "Mercury", id: 1621800675
+mas "MoneyCoach", id: 989642198
+mas "MousHero for Safari", id: 6447680045
+mas "MyWallpaper", id: 1552826194
+mas "Noir", id: 1592917505
+mas "Numbers", id: 409203825
+mas "Paprika Recipe Manager 3", id: 1303222628
+mas "Peek", id: 1554235898
+mas "Randa", id: 1589044499
+mas "rcmd", id: 1596283165
+mas "ReddBar", id: 6739960301
+mas "Redirect Web for Safari", id: 1571283503
+mas "Refined GitHub", id: 1519867270
+mas "Save to Raindrop.io", id: 1549370672
+mas "Scratchpad", id: 6504040051
+mas "ShellHistory", id: 1564015476
+mas "SingleFile", id: 6444322545
+mas "Sink It", id: 6449873635
+mas "SnippetsLab", id: 1006087419
+mas "Snippety", id: 1530751461
+mas "StopTheMadness Pro", id: 6471380298
+mas "Subscriptions", id: 1577082754
+mas "Super Agent", id: 1568262835
+mas "TabBack", id: 1660506599
+mas "TestFlight", id: 899247664
+mas "Text Workflow", id: 1600520682
+mas "Textastic", id: 572491815
+mas "Things", id: 904280696
+mas "Toolbox", id: 6470455406
+mas "Total Refresh", id: 1573919086
+mas "ToyViewer", id: 414298354
+mas "TypeGenius", id: 6469731855
+mas "UltraNotes", id: 6468902627
+mas "Userscripts", id: 1463298887
+mas "VidHub", id: 1659622164
+mas "Vidimote", id: 1585702412
+mas "Vinegar", id: 1591303229
+mas "Wipr", id: 1662217862
+mas "xReload", id: 1588834516
+mas "xSearch", id: 1579902068
+mas "Yoink", id: 457622435
