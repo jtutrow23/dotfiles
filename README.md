@@ -1,4 +1,4 @@
-# dotfiles# dotfiles# 🧪 Justin’s macOS Dotfiles
+# 🧪 Justin’s macOS Dotfiles
 
 Welcome to my personal dotfiles setup — optimized for:
 - Apple Silicon Macs (M1/M2)
