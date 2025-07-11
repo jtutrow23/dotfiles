@@ -1,16 +1,27 @@
 # ~/dotfiles/zsh/init.zsh
 
-# Load shell options + env vars
+# ──────────────────────────────────────────────────────────────────────────────
+# Modular Zsh bootstrap — loads everything else, ensures clean plugin setup
+# ──────────────────────────────────────────────────────────────────────────────
+
+# 1. Load shell options & environment variables
 source "${0:A:h}/env.zsh"
 
-# Ensure Znap is installed
-[[ -r ~/dotfiles/Repos/znap/znap.zsh ]] || git clone --depth 1 https://github.com/marlonrichert/zsh-snap.git ~/dotfiles/Repos/znap
+# 2. Set plugin repo directory for Znap (keep plugins in dotfiles/Repos)
+zstyle ':znap:*' repos-dir ~/dotfiles/Repos
+
+# 3. Ensure Znap is installed to the right folder
+if [[ ! -r ~/dotfiles/Repos/znap/znap.zsh ]]; then
+  git clone --depth 1 https://github.com/marlonrichert/zsh-snap.git ~/dotfiles/Repos/znap
+fi
 source ~/dotfiles/Repos/znap/znap.zsh
 
-# Load plugins and prompt
+# 4. Load plugins and prompt (modular, from other files)
 source "${0:A:h}/plugins.zsh"
 source "${0:A:h}/prompt.zsh"
 
-# Customizations
-source "${0:A:h}/aliases.sh"
-source "${0:A:h}/functions.sh"
+# 5. Load your custom aliases and functions
+source "${0:A:h}/aliases.zsh"
+source "${0:A:h}/functions.zsh"
+
+# (Optional) Add more custom loads below...

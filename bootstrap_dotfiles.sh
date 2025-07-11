@@ -1,22 +1,23 @@
 #!/bin/bash
-# ─── 🚀 Dotfiles Bootstrap for Apple Silicon Macs ───────────────────────────
+# ─── 🚀 Dotfiles Bootstrap for Apple Silicon Macs ────────────────
 
 set -e
 
 # 🧰 Define paths
-DOTFILES="$HOME/dotfiles"  # Change if your dotfiles live elsewhere
+DOTFILES="$HOME/dotfiles"
+ZSHDIR="$DOTFILES/zsh"
 ZSHRC="$HOME/.zshrc"
 
 # 🗂 Ensure expected folder structure
-mkdir -p "$HOME/Repos"
-mkdir -p "$DOTFILES/zsh"
+mkdir -p "$ZSHDIR/Repos"
+mkdir -p "$ZSHDIR"
 
 # 🔗 Symlink .zshrc to dotfiles version
 if [[ -e "$ZSHRC" && ! -L "$ZSHRC" ]]; then
     echo "⚠️  Backing up original .zshrc to .zshrc.backup"
     mv "$ZSHRC" "$ZSHRC.backup"
 fi
-ln -sf "$DOTFILES/zsh/.zshrc" "$ZSHRC"
+ln -sf "$ZSHDIR/.zshrc" "$ZSHRC"
 
 # 🧪 Confirm Homebrew exists
 if ! command -v brew &>/dev/null; then
@@ -27,11 +28,18 @@ fi
 # ✅ Install core tools
 brew bundle --file="$DOTFILES/Brewfile"
 
-# 💡 Optional: Initialize mise
-# mise activate zsh
+# 🧹 Ensure all modular .zsh files exist (empty if not already)
+for f in init.zsh env.zsh plugins.zsh prompt.zsh aliases.zsh functions.zsh; do
+    [ -f "$ZSHDIR/$f" ] || touch "$ZSHDIR/$f"
+done
 
-# 🧼 Source Zsh config
-source "$ZSHRC"
-echo "✅ Zsh loaded with dotfiles. Run 'znap pull' to update plugins."
+# ⚡️ Add /zsh/Repos/ to .gitignore (for plugin repos)
+grep -qxF '/zsh/Repos/' "$DOTFILES/.gitignore" || echo '/zsh/Repos/' >> "$DOTFILES/.gitignore"
 
-# ─────────────────────────────────────────────────────────────────────────────
+# 🧼 Source Zsh config (for interactive installs only)
+if [[ $- == *i* ]]; then
+    source "$ZSHRC"
+    echo "✅ Zsh loaded with dotfiles. Run 'znap pull' to update plugins."
+else
+    echo "✅ Dotfiles bootstrap complete. Open a new terminal to load Zsh config."
+fi
