@@ -1,4 +1,4 @@
-# ~/dotfiles/zsh/aliases.sh
+# ~/dotfiles/zsh/aliases.zsh
 
 # Navigation
 alias ..='cd ..'

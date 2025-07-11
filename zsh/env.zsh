@@ -1,18 +1,13 @@
 # ~/dotfiles/zsh/env.zsh
 
-# Shell options
-setopt AUTO_CD AUTO_PUSHD HIST_IGNORE_ALL_DUPS SHARE_HISTORY
+# Define DOTFILES and ZSHDIR safely
+export DOTFILES="${DOTFILES:-$HOME/dotfiles}"
+export ZSHDIR="${ZSHDIR:-$DOTFILES/zsh}"
 
-# Paths (Homebrew always first)
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
-
-# Editor and other core env
-export EDITOR="nvim"
-export PAGER="less -R"
-export FZF_DEFAULT_COMMAND='fd --type f'
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555"
-export FUNCNEST=1000
-export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-
-# Homebrew env (best practice for Apple Silicon)
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# Ensure znap is installed and sourced
+ZNAP_REPO="$ZSHDIR/Repos/znap"
+if [[ ! -e "$ZNAP_REPO/znap.zsh" ]]; then
+  echo "📦 Cloning znap..."
+  git clone --depth=1 https://github.com/marlonrichert/zsh-snap.git "$ZNAP_REPO"
+fi
+source "$ZNAP_REPO/znap.zsh"

@@ -1,17 +1,10 @@
-# Modular Zsh bootstrap
+# Set fallback ZSHDIR if not already defined
+export DOTFILES="${DOTFILES:-$HOME/dotfiles}"
+export ZSHDIR="${ZSHDIR:-$DOTFILES/zsh}"
 
-# Env first
-source "${0:A:h}/env.zsh"
-
-# Znap setup (with repos-dir set if not in ~/.zshenv already)
-zstyle ':znap:*' repos-dir ~/dotfiles/Repos
-[[ -r ~/dotfiles/Repos/znap/znap.zsh ]] || git clone --depth 1 https://github.com/marlonrichert/zsh-snap.git ~/dotfiles/Repos/znap
-source ~/dotfiles/Repos/znap/znap.zsh
-
-# Load plugins first, then prompt
-source "${0:A:h}/plugins.zsh"
-source "${0:A:h}/prompt.zsh"
-
-# Custom
-source "${0:A:h}/aliases.zsh"
-source "${0:A:h}/functions.zsh"
+# Source modular files from the zsh config directory
+source "$ZSHDIR/env.zsh"
+source "$ZSHDIR/plugins.zsh"
+source "$ZSHDIR/prompt.zsh"
+source "$ZSHDIR/aliases.zsh"
+source "$ZSHDIR/functions.zsh"

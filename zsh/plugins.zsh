@@ -1,9 +1,9 @@
 # ~/dotfiles/zsh/plugins.zsh
 
-# Pure prompt dependency (must come before pure itself)
+# Dependency: Pure prompt needs zsh-async
 znap source mafredri/zsh-async
 
-# Core Zsh plugins
+# Zsh plugin sources
 znap source jeffreytse/zsh-vi-mode
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting

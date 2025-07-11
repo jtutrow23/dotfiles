@@ -7,7 +7,7 @@ mkcd() {
 
 # Extract various archive types
 extract() {
-  if [ -f "$1" ]; then
+  if [[ -f "$1" ]]; then
     case "$1" in
       *.tar.bz2)  tar xjf "$1"    ;;
       *.tar.gz)   tar xzf "$1"    ;;
@@ -20,9 +20,9 @@ extract() {
       *.zip)      unzip "$1"      ;;
       *.Z)        uncompress "$1" ;;
       *.7z)       7z x "$1"       ;;
-      *) echo "Don't know how to extract '$1'..." ;;
+      *) echo "❌ Don't know how to extract: '$1'" ;;
     esac
   else
-    echo "'$1' is not a valid file!"
+    echo "❌ '$1' is not a valid file!"
   fi
 }
