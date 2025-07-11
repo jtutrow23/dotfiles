@@ -1,14 +1,10 @@
 # ~/dotfiles/zsh/plugins.zsh
 
-# Load in correct order
+# Pure prompt dependency (must come before pure itself)
+znap source mafredri/zsh-async
+
+# Core Zsh plugins
 znap source jeffreytse/zsh-vi-mode
-
-# Patch recursion
-zvm_config() {
-  ZVM_WIDGETS_IGNORE+=(zle-line-init zle-keymap-select)
-}
-
-# Core plugins
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-syntax-highlighting
 znap source marlonrichert/zsh-autocomplete
