@@ -1,4 +1,5 @@
 .DS_Store
 Repos/
 /zsh/Repos/
-*.zwc
+*.zwczsh/*.zwc
+zsh/*.zwc

@@ -28,7 +28,6 @@ defaults write -g AppleWindowTabbingMode             -string always
 defaults write com.apple.dock show-recents               -bool false
 defaults write com.apple.dock show-process-indicators    -bool false
 defaults write com.apple.dock persistent-apps            -array          # Unpin all apps
-defaults write com.apple.dock tilesize                   -int 48
 defaults write com.apple.dock orientation                -string left
 killall Dock
 

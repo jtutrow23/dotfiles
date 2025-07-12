@@ -13,3 +13,6 @@ source "$ZSHDIR/prompt.zsh"
 source "$ZSHDIR/aliases.zsh"
 source "$ZSHDIR/functions.zsh"
 
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
