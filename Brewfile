@@ -81,8 +81,7 @@ brew "felixkratz/formulae/sketchybar"
 brew "koekeishiya/formulae/skhd"
 
 # Casks
-cask "1password"
-cask "1password-cli@beta"
+cask "1password@beta"
 cask "1password-cli@beta"
 cask "airbuddy"
 cask "alcove"
