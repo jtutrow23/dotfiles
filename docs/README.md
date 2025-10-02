@@ -17,7 +17,7 @@ Collection of `defaults write` and `pmset` tweaks for usability, UI, and power s
 ---
 
 ## ⚙️ Setup Guide
-Step-by-step guide for symlinks, Homebrew installs, and applying defaults.  
+Step-by-step instructions for symlinks, Homebrew installs, and applying defaults.  
 👉 [setup.md](setup.md)
 
 ---
@@ -25,5 +25,3 @@ Step-by-step guide for symlinks, Homebrew installs, and applying defaults.
 ## 🐚 Zsh Cheat Sheet
 Quick reference for aliases, functions, shortcuts, and Znap/Starship usage.  
 👉 [zsh_cheatsheet.md](zsh_cheatsheet.md)
-
----
