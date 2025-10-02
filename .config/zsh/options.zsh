@@ -28,3 +28,19 @@ fi
 
 # repo-local executables
 [[ -d "$HOME/dotfiles/bin" ]] && path=("$HOME/dotfiles/bin" $path)
+
+# zoxide (better cd)
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+  alias zc="zoxide query -l | fzf | xargs -I{} z {}"
+fi
+
+# fzf defaults
+if command -v fd >/dev/null 2>&1; then
+  export FZF_DEFAULT_COMMAND='fd --hidden --strip-cwd-prefix --exclude .git --type f'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+else
+  export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
