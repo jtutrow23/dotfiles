@@ -1,7 +1,15 @@
+# === Reset + Bootstrap (one-shot) ===
+# This seeds/updates the scripts, then runs reset (with backup) and bootstrap.
+
+# 0) Ensure repo exists
+test -d ~/dotfiles || { echo "❌ ~/dotfiles not found"; exit 1; }
+mkdir -p ~/dotfiles/bin
+
+# 1) Write/reset script with --restore/--list/--dry-run
+cat > ~/dotfiles/reset_dotfiles.sh <<'EOF'
 #!/usr/bin/env zsh
 set -euo pipefail
 
-# What we manage
 MANAGED=(
   "$HOME/.zshrc"
   "$HOME/.zshenv"
@@ -23,8 +31,6 @@ Usage:
   reset_dotfiles.sh --list       # list existing backups
   reset_dotfiles.sh --restore    # restore from most recent backup
   reset_dotfiles.sh --restore PATH/TO/BACKUP  # restore from specific backup dir
-
-Backups are named: ~/dotfiles_reset_YYYYMMDD_HHMMSS
 USAGE
 }
 
@@ -50,12 +56,8 @@ restore_one() {
   local src="$src_root/$rel"
   local dst="$HOME/$rel"
 
-  if [[ ! -e "$src" && ! -L "$src" ]]; then
-    # nothing to restore for this entry; skip quietly
-    return 0
-  fi
+  [[ -e "$src" || -L "$src" ]] || return 0
 
-  # If something already exists at destination, back it up separately
   if [[ -L "$dst" || -f "$dst" || -d "$dst" ]]; then
     local collide_backup="$BACKUP_ROOT/dotfiles_restore_collision_$TS"
     doit "mkdir -p '$collide_backup/$(dirname "$rel")'"
@@ -63,9 +65,7 @@ restore_one() {
     doit "mv '$dst' '$collide_backup/$(basename "$rel")'"
   fi
 
-  # Ensure parent dir exists for nested paths
   doit "mkdir -p '$(dirname "$dst")'"
-
   log "↩️  Restoring $rel"
   doit "mv '$src' '$dst'"
 }
@@ -74,63 +74,43 @@ list_backups() {
   local found=0
   for d in "$BACKUP_ROOT"/dotfiles_reset_*; do
     [[ -d "$d" ]] || continue
-    found=1
-    printf "%s\n" "$d"
+    found=1; printf "%s\n" "$d"
   done
-  (( found )) || log "(no backups found matching $BACKUP_ROOT/dotfiles_reset_*)"
+  (( found )) || log "(no backups found)"
 }
 
-# ---------------------------
 # Parse args
-# ---------------------------
 if (( $# == 0 )); then
   MODE="reset"
 else
   case "${1:-}" in
     --dry-run) DRYRUN=1; MODE="reset" ;;
-    --list)    MODE="list" ;;
+    --list) MODE="list" ;;
     --restore) MODE="restore"; RESTORE_ARG="${2:-}" ;;
     -h|--help) usage; exit 0 ;;
     *) usage; exit 1 ;;
   esac
 fi
 
-# ---------------------------
-# Execute
-# ---------------------------
 case "$MODE" in
   list)
     list_backups
     ;;
-
   reset)
     log "🧹 Resetting managed dotfiles (backup first)…"
-    for t in "${MANAGED[@]}"; do
-      backup_and_remove "$t"
-    done
+    for t in "${MANAGED[@]}"; do backup_and_remove "$t"; done
     if [[ -d "$RESET_BACKUP" ]]; then
       log "✅ Reset complete. Backup at: $RESET_BACKUP"
     else
       log "ℹ️  Nothing to back up; no managed files found."
     fi
     ;;
-
   restore)
-    # Determine backup source
-    if [[ -n "${RESTORE_ARG:-}" ]]; then
-      SRC="$RESTORE_ARG"
-    else
-      SRC="$(latest_backup)"
-    fi
-
+    if [[ -n "${RESTORE_ARG:-}" ]]; then SRC="$RESTORE_ARG"; else SRC="$(latest_backup)"; fi
     if [[ -z "${SRC:-}" || ! -d "$SRC" ]]; then
-      log "❌ No valid backup directory found."
-      log "Tip: run '--list' to see available backups, or pass one to --restore."
-      exit 1
+      log "❌ No valid backup directory found."; exit 1
     fi
-
     log "🔁 Restoring from: $SRC"
-    # Map list for restore: make paths relative to $HOME
     RELS=(
       ".zshrc"
       ".zshenv"
@@ -138,15 +118,72 @@ case "$MODE" in
       ".config/nvim"
       ".config/starship.toml"
     )
-
-    for rel in "${RELS[@]}"; do
-      restore_one "$SRC" "$rel"
-    done
-
-    # If backup dir is now empty (everything restored), keep it anyway for audit.
-    log "✅ Restore complete. If anything existed already, it was moved to a 'dotfiles_restore_collision_$TS' folder."
+    for rel in "${RELS[@]}"; do restore_one "$SRC" "$rel"; done
+    log "✅ Restore complete. Collisions (if any) saved to 'dotfiles_restore_collision_$TS'."
     ;;
-
-  *)
-    usage; exit 1 ;;
+  *) usage; exit 1 ;;
 esac
+EOF
+chmod +x ~/dotfiles/reset_dotfiles.sh
+
+# 2) Write bootstrap script
+cat > ~/dotfiles/bin/bootstrap <<'EOF'
+#!/bin/zsh
+set -euo pipefail
+
+echo "🔄 Bootstrapping macOS dotfiles + packages..."
+cd "$HOME/dotfiles" || { echo "❌ dotfiles repo not found"; exit 1; }
+
+# Symlinks
+if [[ -x ./setup_dotfiles.sh ]]; then
+  echo "⚙️  Running setup_dotfiles.sh..."
+  zsh ./setup_dotfiles.sh
+else
+  echo "⚠️  setup_dotfiles.sh not found or not executable"
+fi
+
+# Brewfile
+if command -v brew >/dev/null; then
+  echo "🍺 Running brew bundle..."
+  brew bundle --no-lock
+else
+  echo "❌ Homebrew not installed — install it first!"
+fi
+
+# macOS defaults
+if [[ -x ./macos_bootstrap.sh ]]; then
+  echo "🖥️  Applying macOS defaults..."
+  zsh ./macos_bootstrap.sh
+else
+  echo "⚠️  macos_bootstrap.sh not found or not executable"
+fi
+
+# Znap warm
+if command -v warm >/dev/null; then
+  echo "🔥 Warming plugins..."
+  warm
+else
+  echo "⚠️  warm not found in PATH"
+fi
+
+echo "✅ Bootstrap complete. Restart your terminal to ensure all settings apply."
+EOF
+chmod +x ~/dotfiles/bin/bootstrap
+
+# 3) Ensure ~/dotfiles/bin is in PATH (idempotent)
+grep -q 'dotfiles/bin' ~/.config/zsh/options.zsh || \
+  printf '\n# repo-local executables\n[[ -d "$HOME/dotfiles/bin" ]] && path=("$HOME/dotfiles/bin" $path)\n' >> ~/.config/zsh/options.zsh
+
+# 4) Show dry-run first (no changes)
+echo "🔎 Dry-run reset (no changes):"
+~/dotfiles/reset_dotfiles.sh --dry-run
+
+# 5) Real reset (moves files into backup)
+echo
+read -r "?Proceed with REAL reset now? (y/N) " ans
+[[ "$ans" == "y" || "$ans" == "Y" ]] || { echo "Abort."; exit 0; }
+~/dotfiles/reset_dotfiles.sh
+
+# 6) Bootstrap clean setup
+echo "🚀 Running bootstrap…"
+bootstrap
