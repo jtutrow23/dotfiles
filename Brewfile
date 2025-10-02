@@ -3,10 +3,10 @@ tap "koekeishiya/formulae"
 tap "vitorgalvao/tiny-scripts"
 
 # ─── CORE LIBS & UTILITIES ────────────────────────────────────────────
-brew "apr"             # Apache Portable Runtime
+brew "apr"
 brew "apr-util"
 brew "argon2"
-brew "ast-grep"        # Code search/lint
+brew "ast-grep"
 brew "autoconf"
 brew "awscli"
 brew "bash"
@@ -89,15 +89,6 @@ brew "yt-dlp"
 brew "zoxide"
 brew "zsh"
 
-# ─── ZSH PLUGINS (REMOVED -- handled by Znap) ──────────────────────────
-# brew "zsh-autocomplete"
-# brew "zsh-autosuggestions"
-# brew "zsh-completions"
-# brew "zsh-history-substring-search"
-# brew "zsh-vi-mode"
-# brew "pure"
-# brew "zsh-async"
-
 # ─── CASKS ────────────────────────────────────────────────────────────
 cask "1password-cli@beta"
 cask "1password@beta"
@@ -133,7 +124,7 @@ cask "git-credential-manager"
 cask "hazel"
 cask "iina"
 cask "istat-menus"
-cask "iterm2@beta" # ✅ keep beta, remove stable
+cask "iterm2@beta" # keep beta only
 cask "itermai"
 cask "itermbrowserplugin"
 cask "jordanbaird-ice@beta"
