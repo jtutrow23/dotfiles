@@ -35,3 +35,5 @@ zstyle ":completion:*:descriptions" format "%F{8}%d%f"
 zstyle ":completion:*" list-colors "${(s.:.)LS_COLORS}"
 zstyle ":fzf-tab:complete:*" fzf-preview "bat --style=numbers --color=always --line-range=:500 --plain --pager=never $realpath 2>/dev/null || eza -lah --group-directories-first --color=always $realpath 2>/dev/null || file --brief $realpath"
 zstyle ":fzf-tab:*" switch-group "ctrl-h" "ctrl-l"
+
+[[ -r "$ZDOTDIR/extras.zsh" ]] && source "$ZDOTDIR/extras.zsh"
