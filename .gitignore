@@ -1,0 +1,23 @@
+# macOS junk
+.DS_Store
+**/.DS_Store
+
+# Editor/NeoVim temp
+*.swp
+*.swo
+.netrwhist
+.tags
+
+# Caches & state (keep code, ignore noise)
+.cache/
+.local/state/
+
+# Zsh runtime artifacts (don’t version these)
+.config/zsh/.zcompdump
+.config/zsh/.zsh_history
+
+# LazyVim/Neovim generated content
+.config/nvim/.repro/
+.config/nvim/.luarc.json
+.config/nvim/lazy/
+!.config/nvim/lazy-lock.json
