@@ -1,0 +1,8 @@
+#!/bin/zsh
+set -euo pipefail
+export ZDOTDIR="$HOME/.config/zsh"
+source "$HOME/.znap/znap.zsh"
+[[ -r "$ZDOTDIR/.zshrc" ]] && source "$ZDOTDIR/.zshrc"
+znap pull
+znap compile "$ZDOTDIR"
+echo "✅ Znap warmed & compiled."
