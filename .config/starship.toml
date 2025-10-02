@@ -1,4 +1,4 @@
-# Minimal, legible, and fast
+# Minimal, legible, fast
 add_newline = true
 format = """
 $os $username$hostname$directory\
@@ -6,7 +6,7 @@ $git_branch$git_state$git_status\
 $cmd_duration
 $character"""
 
-[os]                 # shows the OS icon once per prompt
+[os]
 disabled = false
 
 [username]
@@ -34,8 +34,9 @@ style = "purple"
 format = "([$state( $progress_current/$progress_total)]) "
 style = "yellow"
 
+# ✅ Clean, valid git_status block (no escaping brackets)
 [git_status]
-format = "([\\[$all_status$ahead_behind\\]]) "
+format = "([$all_status$ahead_behind]) "
 conflicted = ""
 stashed = " "
 modified = " "
