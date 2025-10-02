@@ -21,3 +21,7 @@
 .config/nvim/.luarc.json
 .config/nvim/lazy/
 !.config/nvim/lazy-lock.json
+# Zsh runtime
+.config/zsh/.zcompdump*
+.config/zsh/.zsh_history
+.config/zsh/*.zwc
