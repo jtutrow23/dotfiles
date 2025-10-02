@@ -1,24 +1,28 @@
-# Load Znap (clone if missing)
-if [[ ! -d $HOME/.znap ]]; then
-  git clone --depth 1 https://github.com/marlonrichert/zsh-snap.git ~/.znap
-fi
-source ~/.znap/znap.zsh
+# --- Minimal, sane Zsh config (repo-managed) ---
 
-# Plugins (lean: no history plugin)
-znap source marlonrichert/zsh-autocomplete
-znap source zsh-users/zsh-syntax-highlighting
-znap source zsh-users/zsh-completions
-
-# Starship prompt (optional)
-if command -v starship >/dev/null 2>&1; then
-  eval "$(starship init zsh)"
+# Homebrew env (safe if brew exists)
+if command -v brew >/dev/null 2>&1; then
+  eval "$(/opt/homebrew/bin/brew shellenv)" 2>/dev/null || true
 fi
 
-# Completion system
+# Options: sane, predictable shell
+setopt promptsubst autocd interactivecomments no_beep
+setopt hist_ignore_dups hist_ignore_all_dups share_history
+
+# History (compact & safe)
+HISTFILE="${XDG_STATE_HOME:-$HOME/.local/state}/zsh/history"
+mkdir -p "$(dirname "$HISTFILE")"
+HISTSIZE=5000
+SAVEHIST=5000
+
+# Completion
 autoload -Uz compinit
 compinit -i -C 2>/dev/null || true
 
-# Modular loads
-[[ -r "$ZDOTDIR/options.zsh"   ]] && source "$ZDOTDIR/options.zsh"
-[[ -r "$ZDOTDIR/aliases.zsh"   ]] && source "$ZDOTDIR/aliases.zsh"
-[[ -r "$ZDOTDIR/functions.zsh" ]] && source "$ZDOTDIR/functions.zsh"
+# PATH niceties (only if dirs exist)
+[[ -d "$HOME/.local/bin" ]] && path=("$HOME/.local/bin" $path)
+
+# Prompt (Starship optional)
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
+fi
