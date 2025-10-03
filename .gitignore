@@ -1,28 +1,36 @@
-# macOS junk
+# macOS system junk
 .DS_Store
-**/.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
 
-# Editor/NeoVim temp
+# Zsh session + cache
+.config/zsh/.zsh_sessions/
+.config/zsh/.zcompdump*
+.zsh*.zwc
+.zcompdump*
+
+# Vim/Neovim swap/backup
 *.swp
 *.swo
-.netrwhist
-.tags
+*.swn
+*.un~
+.config/nvim/backup/
+.config/nvim/swap/
+.config/nvim/undo/
 
-# Caches & state (keep code, ignore noise)
-.cache/
-.local/state/
+# Homebrew noise
+Brewfile.lock.json
 
-# Zsh runtime artifacts (don’t version these)
-.config/zsh/.zcompdump
-.config/zsh/.zsh_history
+# Logs
+*.log
 
-# LazyVim/Neovim generated content
-.config/nvim/.repro/
-.config/nvim/.luarc.json
-.config/nvim/lazy/
-!.config/nvim/lazy-lock.json
-# Zsh runtime
-.config/zsh/.zcompdump*
-.config/zsh/.zsh_history
-.config/zsh/*.zwc
-.config/zsh/.zsh_sessions/
+# General backup files
+*~
+*.bak
+*.old
+
+# Python venvs
+venv/
+.venv/
