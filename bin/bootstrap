@@ -1,47 +1,8 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 set -euo pipefail
-
-echo "🔄 Bootstrapping macOS dotfiles + packages..."
-cd "$HOME/dotfiles" || { echo "❌ dotfiles repo not found"; exit 1; }
-
-# 1) Symlink dotfiles
-if [[ -x ./setup_dotfiles.sh ]]; then
-  echo "⚙️  Running setup_dotfiles.sh..."
-  zsh ./setup_dotfiles.sh
-else
-  echo "⚠️  setup_dotfiles.sh not found or not executable"
-fi
-
-# 2) Brewfile install
-if command -v brew >/dev/null; then
-  echo "🍺 Running brew bundle..."
-  brew bundle --file="$HOME/dotfiles/Brewfile"
-else
-  echo "❌ Homebrew not installed — install it first!"
-fi
-
-# 3) macOS defaults
-if [[ -x ./macos_bootstrap.sh ]]; then
-  echo "🖥️  Applying macOS defaults..."
-  zsh ./macos_bootstrap.sh
-else
-  echo "⚠️  macos_bootstrap.sh not found or not executable"
-fi
-
-# 4) Warm Znap
-if command -v warm >/dev/null; then
-  echo "🔥 Warming plugins..."
-  warm
-else
-  echo "⚠️  warm not found in PATH (appears after Zsh reload)"
-fi
-
-# 5) Run sanity check
-if [[ -x "$HOME/dotfiles/bin/sanity" ]]; then
-  echo "🧪 Running sanity..."
-  "$HOME/dotfiles/bin/sanity"
-else
-  echo "⚠️  sanity script not found"
-fi
-
-echo "✅ Bootstrap complete. Consider: exec zsh"
+cd "$HOME/dotfiles" || { echo "dotfiles repo not found"; exit 1; }
+[[ -x ./setup_dotfiles.sh ]] && zsh ./setup_dotfiles.sh || echo "setup_dotfiles.sh missing"
+if command -v brew >/dev/null; then brew bundle --file="$HOME/dotfiles/Brewfile" || true; else echo "Homebrew not installed"; fi
+[[ -x ./macos_bootstrap.sh ]] && zsh ./macos_bootstrap.sh || echo "macos_bootstrap.sh missing (ok)"
+[[ -x "$HOME/dotfiles/bin/sanity" ]] && "$HOME/dotfiles/bin/sanity" || echo "sanity missing (ok)"
+echo "Bootstrap complete. Now: exec zsh"
