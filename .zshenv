@@ -1,2 +1,2 @@
-# Keep .zshenv minimal: point Zsh at repo-managed config dir
+# Minimal: point Zsh at repo-managed config dir
 export ZDOTDIR="$HOME/.config/zsh"

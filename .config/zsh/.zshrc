@@ -7,11 +7,22 @@ if [[ ! -d $HOME/.znap ]]; then
 fi
 source "$HOME/.znap/znap.zsh"
 
-# --- Paths (repo-local tools) ---
+# --- repo-local executables on PATH ---
 [[ -d "$HOME/dotfiles/bin" ]] && path=("$HOME/dotfiles/bin" $path)
 
-# --- Core shell options, aliases, functions ---
+# --- core modules (guarded) ---
 [[ -r "$ZDOTDIR/options.zsh"   ]] && source "$ZDOTDIR/options.zsh"
 [[ -r "$ZDOTDIR/aliases.zsh"   ]] && source "$ZDOTDIR/aliases.zsh"
 [[ -r "$ZDOTDIR/functions.zsh" ]] && source "$ZDOTDIR/functions.zsh"
-[[ -r "$ZDOTDIR/extras.zsh"    ]] && source "$ZDOTDIR/extras[[ -r "$ZDOTDIR/exma[[ -r "$ZDOTDIR/extras.zsh"   gin[[ -r "$ZDOTDIR/extras.zsh"    ]] s/# Keep .zshenv minimal: point Z zexport ZDOTDIR="$HOME/.config/zsh"
+[[ -r "$ZDOTDIR/extras.zsh"    ]] && source "$ZDOTDIR/extras.zsh"
+
+# --- Znap plugins (Homebrew plugin formulae removed) ---
+znap source zsh-users/zsh-autosuggestions
+znap source zsh-users/zsh-completions
+znap source zsh-users/zsh-history-substring-search
+znap source jeffreytse/zsh-vi-mode
+
+# --- Starship prompt ---
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
+fi
