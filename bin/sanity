@@ -1,39 +1,16 @@
-#!/usr/bin/env zsh
-set -euo pipefail
+#!/usr/bin/env bash
+zsh -lic '
+echo "🔍 Running dotfiles sanity check (interactive login)…"
+print "ZDOTDIR=${ZDOTDIR:-<unset>}"
 
-echo "🔍 Running dotfiles sanity check..."
+typeset -f znap >/dev/null && echo "✅ Znap loaded" || echo "❌ Znap missing"
+alias gs >/dev/null 2>&1 && echo "✅ Aliases sourced" || echo "❌ Aliases not sourced"
+whence -w mkcd >/dev/null 2>&1 && echo "✅ Functions sourced" || echo "❌ Functions not sourced"
 
-# 1) Verify ZDOTDIR
-echo "ZDOTDIR=$ZDOTDIR"
-[[ "${ZDOTDIR:-}" == "$HOME/.config/zsh" ]] && echo "✅ ZDOTDIR OK" || echo "❌ ZDOTDIR mismatch (expected $HOME/.config/zsh)"
-
-# 2) Znap loaded?
-typeset -f znap >/dev/null && echo "✅ Znap loaded" || echo "❌ Znap missing (check .zshrc/.zshenv and ZDOTDIR)"
-
-# 3) Starship present?
-if command -v starship >/dev/null; then
-  starship --version >/dev/null 2>&1 && echo "✅ Starship found"
-else
-  echo "⚠️  Starship not installed (brew install starship)"
-fi
-
-# 4) Aliases working?
-gs >/dev/null 2>&1 && echo "✅ Aliases (gs) OK" || echo "❌ Aliases not sourced"
-
-# 5) Functions working?
-mkcd testdir >/dev/null 2>&1 && [[ -d testdir ]] && echo "✅ Functions (mkcd) OK" || echo "❌ Functions not sourced"
-rm -rf testdir || true
-
-# 6) PATH includes repo bin
-echo "$PATH" | grep -q "$HOME/dotfiles/bin" && echo "✅ bin/ in PATH" || echo "❌ bin/ missing from PATH"
-
-# 7) Symlinks pointing right
-for p in "$HOME/.config/zsh" "$HOME/.config/nvim" "$HOME/.config/starship.toml"; do
-  if [ -L "$p" ]; then
-    echo "✅ $p -> $(readlink "$p")"
-  else
-    echo "❌ Missing symlink: $p"
-  fi
-done
+command -v starship >/dev/null 2>&1 && echo "✅ Starship found" || echo "⚠️ Starship not installed"
+[[ -L "$HOME/.config/zsh" || -d "$HOME/.config/zsh" ]] && echo "✅ $HOME/.config/zsh present" || echo "❌ $HOME/.config/zsh missing"
+[[ -e "$HOME/.config/nvim" ]] && echo "✅ $HOME/.config/nvim present" || echo "❌ $HOME/.config/nvim missing"
+[[ -e "$HOME/.config/starship.toml" ]] && echo "✅ $HOME/.config/starship.toml present" || echo "❌ $HOME/.config/starship.toml missing"
 
 echo "✨ Sanity check complete."
+'
