@@ -26,3 +26,17 @@ updateall() {
   command -v pipx >/dev/null 2>&1 && pipx upgrade-all || true
   echo "done."
 }
+
+# Update & cleanup Homebrew
+brewup() {
+  echo "🍺 Updating Homebrew..."
+  brew upgrade --greedy-auto-updates
+
+  echo "⬆️  Upgrading formulae & casks..."
+  brew upgrade
+
+  echo "🧹 Cleaning up old versions..."
+  brew cleanup --prune=all
+
+  echo "✅ Homebrew is up-to-date."
+}
