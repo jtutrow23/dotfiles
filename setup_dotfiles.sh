@@ -2,11 +2,9 @@
 set -euo pipefail
 
 echo "🔄 Setting up dotfiles..."
-
 BACKUP="$HOME/dotfiles_backup_$(date +%Y%m%d_%H%M%S)"
 mkdir -p "$BACKUP"
 
-# Symlink helper
 link_file() {
   local src="$1" dst="$2"
   if [[ -L "$dst" || -f "$dst" || -d "$dst" ]]; then
@@ -17,17 +15,16 @@ link_file() {
   ln -s "$src" "$dst"
 }
 
-# Ensure ~/.config exists
+# Ensure ~/.config
 mkdir -p "$HOME/.config"
 
-# Core configs
+# Core links
 link_file "$HOME/dotfiles/.config/zsh" "$HOME/.config/zsh"
 link_file "$HOME/dotfiles/.config/nvim" "$HOME/.config/nvim"
 link_file "$HOME/dotfiles/.config/starship.toml" "$HOME/.config/starship.toml"
 
-# Entry points
+# Entrypoints
 link_file "$HOME/dotfiles/.zshrc" "$HOME/.zshrc"
 link_file "$HOME/dotfiles/.zshenv" "$HOME/.zshenv"
 
-echo "✅ Dotfiles setup complete."
-echo "Run: exec zsh   to reload your shell."
+echo "✅ Dotfiles setup complete. Run: exec zsh"

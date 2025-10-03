@@ -1,0 +1,39 @@
+#!/usr/bin/env zsh
+set -euo pipefail
+
+echo "🔍 Running dotfiles sanity check..."
+
+# 1) Verify ZDOTDIR
+echo "ZDOTDIR=$ZDOTDIR"
+[[ "${ZDOTDIR:-}" == "$HOME/.config/zsh" ]] && echo "✅ ZDOTDIR OK" || echo "❌ ZDOTDIR mismatch (expected $HOME/.config/zsh)"
+
+# 2) Znap loaded?
+typeset -f znap >/dev/null && echo "✅ Znap loaded" || echo "❌ Znap missing (check .zshrc/.zshenv and ZDOTDIR)"
+
+# 3) Starship present?
+if command -v starship >/dev/null; then
+  starship --version >/dev/null 2>&1 && echo "✅ Starship found"
+else
+  echo "⚠️  Starship not installed (brew install starship)"
+fi
+
+# 4) Aliases working?
+gs >/dev/null 2>&1 && echo "✅ Aliases (gs) OK" || echo "❌ Aliases not sourced"
+
+# 5) Functions working?
+mkcd testdir >/dev/null 2>&1 && [[ -d testdir ]] && echo "✅ Functions (mkcd) OK" || echo "❌ Functions not sourced"
+rm -rf testdir || true
+
+# 6) PATH includes repo bin
+echo "$PATH" | grep -q "$HOME/dotfiles/bin" && echo "✅ bin/ in PATH" || echo "❌ bin/ missing from PATH"
+
+# 7) Symlinks pointing right
+for p in "$HOME/.config/zsh" "$HOME/.config/nvim" "$HOME/.config/starship.toml"; do
+  if [ -L "$p" ]; then
+    echo "✅ $p -> $(readlink "$p")"
+  else
+    echo "❌ Missing symlink: $p"
+  fi
+done
+
+echo "✨ Sanity check complete."
