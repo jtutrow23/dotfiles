@@ -35,3 +35,10 @@ Brewfile.lock.json
 venv/
 .venv/
 *.zwc
+# zsh/iTerm caches
+.config/zsh/.zsh_sessions/
+.config/zsh/.iterm2/
+.config/zsh/.iterm2_shell_integration.zsh
+.config/zsh/*.zwc
+.cache/
+.zcompdump*
