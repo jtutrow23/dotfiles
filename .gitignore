@@ -34,3 +34,4 @@ Brewfile.lock.json
 # Python venvs
 venv/
 .venv/
+*.zwc

@@ -1,3 +1,5 @@
+# ~/dotfiles/bin/sanity
+
 #!/usr/bin/env bash
 zsh -lic '
 echo "🔍 Running dotfiles sanity check (interactive login)…"
@@ -14,3 +16,16 @@ command -v starship >/dev/null 2>&1 && echo "✅ Starship found" || echo "⚠️
 
 echo "✨ Sanity check complete."
 '
+
+# --- Git cleanliness check ---
+if [ -d "$HOME/dotfiles/.git" ]; then
+  echo "🔍 Checking git status…"
+  cd "$HOME/dotfiles" || exit
+  if git diff --quiet && git diff --cached --quiet && [ -z "$(git status --porcelain --untracked-files=no)" ]; then
+    echo "✅ Git repo clean (no unstaged or staged changes)"
+  else
+    echo "⚠️ Git repo has uncommitted changes or untracked files"
+    git status -s
+  fi
+  cd - >/dev/null || true
+fi
