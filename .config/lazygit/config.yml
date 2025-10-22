@@ -1,54 +1,86 @@
-# ~/.config/lazygit/config.yml
+# ~/.config/lazygit/config.yml — macOS (Apple Silicon) optimized
 
 gui:
-  nerdFontsVersion: "3" # JetBrainsMono Nerd Font v3 plays nice
+  nerdFontsVersion: "3"
   showIcons: true
-  showCommandLog: false
   showFileTree: true
+  showCommandLog: false
   border: "rounded"
-  theme:
-    activeBorderColor: ["#7e9cd8", "bold"] # Kanagawa "Wave Blue"
+  scrollPastBottom: true
+  expandFocusedSidePanel: true
+  sidePanelWidth: 0.33
+  mouseEvents: true
+  theme: # Kanagawa-ish
+    activeBorderColor: ["#7e9cd8", "bold"]   # Wave Blue
     inactiveBorderColor: ["#363646"]
-    selectedLineBgColor: ["#2a2a37"] # Subtle selection
+    selectedLineBgColor: ["#2a2a37"]
     cherryPickedCommitBgColor: ["#2d4f67"]
     cherryPickedCommitFgColor: ["#e6c384"]
-    unstagedChangesColor: ["#e46876"] # Red-ish
+    unstagedChangesColor: ["#e46876"]
     defaultFgColor: ["#c8c093"]
+
 git:
-  # Internal pager is fine; show colors consistently
+  autoFetch: true                  # keep refs fresh
+  parseEmoji: true                 # show :emoji: in logs
+  skipHookPrefix: "skip-ci"
   paging:
     colorArg: "always"
     pager: "less -+F -RX"
-  # Safer default pushes (you can still force-push from UI)
-  autoFetch: true
-  skipHookPrefix: "skip-ci"
+  branchLogCmd: "git log --graph --color=always --pretty=format:'%C(bold blue)%h%Creset %C(cyan)%ad%Creset %C(bold yellow)%d%Creset %C(white)%s%Creset %C(green)(%an)%Creset' --date=short --"
+  log:
+    showWholeGraph: true
+    order: "date-order"
+
 os:
-  editCommand: "nvim" # change to "code -g" if you prefer VS Code
+  editCommand: "nvim"
   editCommandTemplate: "{{editor}} {{filename}}:+{{line}}"
   openCommand: "open"
   openLinkCommand: "open {{link}}"
-promptToReturnFromSubprocess: false
+
+# UX polish
+disableStartupPopups: true
 confirmOnQuit: false
 quitOnTopLevelReturn: true
+promptToReturnFromSubprocess: false
+
+# Key-powered tasks (v0.55+ uses `output: terminal`)
 customCommands:
-  # Force push current branch (bound in localBranches view)
+  # Force push current branch (Branches view)
   - key: "F"
     context: "localBranches"
     description: "Force push current branch"
     command: "git push origin {{.SelectedLocalBranch.Name}} --force"
     loadingText: "Force pushing…"
-    output: terminal
-  # Nuke workspace: restore tracked changes + delete untracked files (files view)
+    output: "terminal"
+
+  # Nuke workspace: restore tracked + delete untracked (Files view)
   - key: "N"
     context: "files"
     description: "Nuke (restore tracked + clean untracked)"
     command: "bash -lc 'git restore . && git clean -fd'"
     loadingText: "Cleaning…"
-    output: terminal
-  # Fresh: reset local main to origin/main (status view)
+    output: "terminal"
+
+  # Fresh reset local main to origin/main (Status view)
   - key: "R"
     context: "status"
     description: "Fresh reset to origin/main"
     command: "bash -lc 'git fetch origin && git reset --hard origin/main'"
     loadingText: "Hard resetting…"
-    output: terminal
+    output: "terminal"
+
+  # Prune merged local branches (Branches view)
+  - key: "P"
+    context: "localBranches"
+    description: "Prune merged local branches"
+    command: "bash -lc 'git branch --merged | egrep -v \"\\*|main|master\" | xargs -n 1 git branch -d || true'"
+    loadingText: "Pruning merged branches…"
+    output: "terminal"
+
+  # Open selected file in editor (Files view)
+  - key: "e"
+    context: "files"
+    description: "Edit file in $EDITOR"
+    command: "bash -lc '{{if .SelectedFilePath}}${EDITOR:-nvim} {{.SelectedFilePath}}{{end}}'"
+    loadingText: "Opening in editor…"
+    output: "terminal"
