@@ -68,3 +68,6 @@ zsh/.iterm2_shell_integration.zsh
 # Misc
 # ──────────────────────────────
 *.icloud
+# Neovim runtime noise
+.config/nvim/lazy-lock.json
+.config/nvim_backup_*
