@@ -1,5 +1,7 @@
+# mkcd: make directory and enter it
 mkcd() { mkdir -p -- "$1" && cd -- "$1"; }
 
+# extract: unpack common archive formats
 extract() {
   local file="$1"
   [[ -f "$file" ]] || { print -r -- "'$file' is not a file"; return 1; }
@@ -15,4 +17,5 @@ extract() {
   esac
 }
 
+# reload: reload zsh config with a green confirmation
 reload() { source "$ZDOTDIR/zshrc" && print -P "%F{green}🔁 Zsh reloaded%f"; }

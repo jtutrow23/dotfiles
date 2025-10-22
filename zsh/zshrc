@@ -1,14 +1,14 @@
-# ~/.config/zsh/zshrc — cleaned & fixed
+# ~/.config/zsh/zshrc — main entrypoint (loaded via $ZDOTDIR/.zshrc shim)
 
-# Ensure ZDOTDIR fallback (if not set by ~/.zshenv)
+# Ensure ZDOTDIR fallback (in case ~/.zshenv isn't read for some reason)
 : "${ZDOTDIR:="$HOME/.config/zsh"}"
 
-# Quietly initialize Homebrew when available
+# 1) Homebrew environment (quiet if brew missing)
 if [[ -x /opt/homebrew/bin/brew ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Load (or install) Znap to ~/.zsh_plugins
+# 2) Znap (plugin manager) — install if missing, then source
 if [[ -r "$HOME/.zsh_plugins/znap/znap.zsh" ]]; then
   source "$HOME/.zsh_plugins/znap/znap.zsh"
 else
@@ -17,26 +17,27 @@ else
     && source "$HOME/.zsh_plugins/znap/znap.zsh"
 fi
 
-# Optional: avoid stale caches after macOS updates
+# Optional: avoid auto-compile surprises
 zstyle ':znap:*' auto-compile no
 
-# Load modular config chunks
+# 3) Load modular chunks (order matters: options → exports → aliases → functions)
 for file in options.zsh exports.zsh aliases.zsh functions.zsh; do
   [[ -r "$ZDOTDIR/$file" ]] && source "$ZDOTDIR/$file"
 done
 
-# Plugins (syntax highlighting last)
+# 4) Plugins (keep syntax highlighting last)
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-completions
 znap source zsh-users/zsh-history-substring-search
 znap source Aloxaf/fzf-tab
 znap source zsh-users/zsh-syntax-highlighting
 
-# fzf key bindings (installed via brew script)
+# 5) fzf key bindings (installed by Homebrew's fzf install script)
 [[ -r "$HOME/.fzf.zsh" ]] && source "$HOME/.fzf.zsh"
 
-# Modern tooling
+# 6) Modern tooling (only if present)
 command -v zoxide  >/dev/null 2>&1 && eval "$(zoxide init zsh)"
 command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
 
+# 7) Byte-compile your config only (safe to rerun)
 znap compile "$ZDOTDIR"/zshrc "$ZDOTDIR"/*.zsh

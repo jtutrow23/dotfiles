@@ -1,29 +1,38 @@
+# ─────────────────────────────────────────────
+# starship.toml — Justin Tutrow prompt (Kanagawa-inspired)
+# Minimal, fast, with 🍎 accent
+# ─────────────────────────────────────────────
+
+add_newline = false
+right_format = "$cmd_duration$time"
+
+# Left layout: 🍎 + directory + git + runtimes
 format = """
-$os$username$hostname$directory$git_branch$git_status$nodejs$python$rust$golang
-$time$cmd_duration
+$os$directory$git_branch$git_status$nodejs$python$rust$golang
 $character
 """
 
+# 🍎 — your machine signature
 [os]
-format = "[$symbol]($style) "
-style = "bold blue"
 disabled = false
+format = "[$symbol]($style) "
+symbol = "🍎"
+style = "bold fg:bright-red"
 
+# Remove user/host clutter
 [username]
-style_user = "bold fg:green"
-format = "[$user]($style)@"
-show_always = true
-
+disabled = true
 [hostname]
-format = "[$hostname]($style) "
-style = "bold fg:yellow"
+disabled = true
 
+# Directory
 [directory]
 style = "bold fg:cyan"
 format = "[$path]($style)[$read_only]($read_only_style) "
 truncation_length = 3
 truncation_symbol = ".../"
 
+# Git
 [git_branch]
 symbol = "🌱 "
 style = "bold fg:magenta"
@@ -33,11 +42,13 @@ format = "on [$symbol$branch]($style) "
 style = "fg:bright-black"
 format = "([$all_status$ahead_behind]($style))"
 
+# Character
 [character]
 success_symbol = "[❯](bold green)"
-error_symbol = "[❯](bold red)"
-vimcmd_symbol = "[❮](bold blue)"
+error_symbol   = "[❯](bold red)"
+vimcmd_symbol  = "[❮](bold blue)"
 
+# Language runtimes
 [nodejs]
 symbol = " "
 style = "fg:green"
@@ -58,11 +69,12 @@ symbol = " "
 style = "fg:cyan"
 format = "via [$symbol($version)]($style) "
 
+# Timing & clock on right
 [cmd_duration]
-format = "took [$duration](bold yellow) "
+format = " took [$duration](bold yellow) "
 
 [time]
 disabled = false
-format = "🕒 [$time]($style) "
+format = " 🕒 [$time]($style) "
 style = "fg:bright-black"
 time_format = "%I:%M %p"
