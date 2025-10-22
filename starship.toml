@@ -1,7 +1,4 @@
-# ─────────────────────────────────────────────
-# starship.toml — Justin Tutrow prompt (Kanagawa-inspired)
-# Minimal, fast, with 🍎 accent
-# ─────────────────────────────────────────────
+# Minimal, fast prompt with Apple badge on the left
 
 add_newline = false
 right_format = "$cmd_duration$time"
@@ -12,14 +9,16 @@ $os$directory$git_branch$git_status$nodejs$python$rust$golang
 $character
 """
 
-# 🍎 — your machine signature
+# OS badge (enable + style), symbols go in a sub-table
 [os]
 disabled = false
 format = "[$symbol]($style) "
-symbol = "🍎"
 style = "bold fg:bright-red"
 
-# Remove user/host clutter
+[os.symbols]
+Macos = "🍎"
+
+# Hide username/hostname noise
 [username]
 disabled = true
 [hostname]
@@ -42,13 +41,13 @@ format = "on [$symbol$branch]($style) "
 style = "fg:bright-black"
 format = "([$all_status$ahead_behind]($style))"
 
-# Character
+# Prompt char
 [character]
 success_symbol = "[❯](bold green)"
 error_symbol   = "[❯](bold red)"
 vimcmd_symbol  = "[❮](bold blue)"
 
-# Language runtimes
+# Runtimes (only show when present)
 [nodejs]
 symbol = " "
 style = "fg:green"
@@ -69,7 +68,7 @@ symbol = " "
 style = "fg:cyan"
 format = "via [$symbol($version)]($style) "
 
-# Timing & clock on right
+# Timing on the right
 [cmd_duration]
 format = " took [$duration](bold yellow) "
 
