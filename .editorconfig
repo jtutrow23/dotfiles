@@ -1,0 +1,53 @@
+# EditorConfig helps maintain consistent coding styles across editors and IDEs
+# https://editorconfig.org/
+
+root = true
+
+# ──────────────────────────────
+# Global defaults
+# ──────────────────────────────
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+# ──────────────────────────────
+# Shell and config files
+# ──────────────────────────────
+[*.{sh,bash,zsh}]
+indent_style = space
+indent_size = 2
+max_line_length = 100
+
+# ──────────────────────────────
+# Lua (Neovim configs)
+# ──────────────────────────────
+[*.lua]
+indent_style = space
+indent_size = 2
+continuation_indent_size = 2
+
+# ──────────────────────────────
+# TOML / YAML / JSON
+# ──────────────────────────────
+[*.{toml,yml,yaml,json}]
+indent_style = space
+indent_size = 2
+
+# ──────────────────────────────
+# Markdown and text files
+# ──────────────────────────────
+[*.{md,txt}]
+trim_trailing_whitespace = false
+indent_style = space
+indent_size = 2
+max_line_length = 0
+
+# ──────────────────────────────
+# Makefiles (tabs required)
+# ──────────────────────────────
+[Makefile]
+indent_style = tab
