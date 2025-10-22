@@ -1,0 +1,42 @@
+# ~/.config/zsh/zshrc — cleaned & fixed
+
+# Ensure ZDOTDIR fallback (if not set by ~/.zshenv)
+: "${ZDOTDIR:="$HOME/.config/zsh"}"
+
+# Quietly initialize Homebrew when available
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# Load (or install) Znap to ~/.zsh_plugins
+if [[ -r "$HOME/.zsh_plugins/znap/znap.zsh" ]]; then
+  source "$HOME/.zsh_plugins/znap/znap.zsh"
+else
+  command -v git >/dev/null 2>&1 \
+    && git clone --depth 1 https://github.com/marlonrichert/zsh-snap.git "$HOME/.zsh_plugins/znap" \
+    && source "$HOME/.zsh_plugins/znap/znap.zsh"
+fi
+
+# Optional: avoid stale caches after macOS updates
+zstyle ':znap:*' auto-compile no
+
+# Load modular config chunks
+for file in options.zsh exports.zsh aliases.zsh functions.zsh; do
+  [[ -r "$ZDOTDIR/$file" ]] && source "$ZDOTDIR/$file"
+done
+
+# Plugins (syntax highlighting last)
+znap source zsh-users/zsh-autosuggestions
+znap source zsh-users/zsh-completions
+znap source zsh-users/zsh-history-substring-search
+znap source Aloxaf/fzf-tab
+znap source zsh-users/zsh-syntax-highlighting
+
+# fzf key bindings (installed via brew script)
+[[ -r "$HOME/.fzf.zsh" ]] && source "$HOME/.fzf.zsh"
+
+# Modern tooling
+command -v zoxide  >/dev/null 2>&1 && eval "$(zoxide init zsh)"
+command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
+
+znap compile "$ZDOTDIR"/zshrc "$ZDOTDIR"/*.zsh

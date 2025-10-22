@@ -516,7 +516,7 @@ Try the interactive features:
 For plugin maintenance:
 
 ```sh
-znap pull          # update plugins
+znap pull         
 znap compile “$ZDOTDIR” ~/dotfiles/znap/*.zsh ~/dotfiles/znap/scripts/*.zsh
 ```
 

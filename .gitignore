@@ -1,0 +1,31 @@
+# macOS cruft
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# System folders
+__MACOSX
+._*
+
+# Zsh / shell caches
+*.zwc
+*.zwc.old
+.zcompdump*
+.zsh_sessions/
+.zsh_history
+
+# Logs and temporary stuff
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Node / Python / build cache (if you ever use them)
+node_modules/
+dist/
+__pycache__/
+.env
+
+# Starship and tool-specific temp files
+*.toml.bak
+*.lock

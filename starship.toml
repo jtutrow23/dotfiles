@@ -1,0 +1,68 @@
+format = """
+$os$username$hostname$directory$git_branch$git_status$nodejs$python$rust$golang
+$time$cmd_duration
+$character
+"""
+
+[os]
+format = "[$symbol]($style) "
+style = "bold blue"
+disabled = false
+
+[username]
+style_user = "bold fg:green"
+format = "[$user]($style)@"
+show_always = true
+
+[hostname]
+format = "[$hostname]($style) "
+style = "bold fg:yellow"
+
+[directory]
+style = "bold fg:cyan"
+format = "[$path]($style)[$read_only]($read_only_style) "
+truncation_length = 3
+truncation_symbol = ".../"
+
+[git_branch]
+symbol = "🌱 "
+style = "bold fg:magenta"
+format = "on [$symbol$branch]($style) "
+
+[git_status]
+style = "fg:bright-black"
+format = "([$all_status$ahead_behind]($style))"
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+vimcmd_symbol = "[❮](bold blue)"
+
+[nodejs]
+symbol = " "
+style = "fg:green"
+format = "via [$symbol($version)]($style) "
+
+[python]
+symbol = " "
+style = "fg:yellow"
+format = "via [$symbol($version)]($style) "
+
+[rust]
+symbol = "🦀 "
+style = "fg:bright-red"
+format = "via [$symbol($version)]($style) "
+
+[golang]
+symbol = " "
+style = "fg:cyan"
+format = "via [$symbol($version)]($style) "
+
+[cmd_duration]
+format = "took [$duration](bold yellow) "
+
+[time]
+disabled = false
+format = "🕒 [$time]($style) "
+style = "fg:bright-black"
+time_format = "%I:%M %p"
