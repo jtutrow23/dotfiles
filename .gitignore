@@ -71,3 +71,5 @@ zsh/.iterm2_shell_integration.zsh
 # Neovim runtime noise
 .config/nvim/lazy-lock.json
 .config/nvim_backup_*
+Documents/Configs/Mackup/
+
