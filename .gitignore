@@ -80,3 +80,9 @@ Documents/Configs/Mackup/
 # Mackup: ignore all except the config file
 .config/mackup/*
 !.config/mackup/mackup.cfg
+
+.config/zsh/.iterm2/
+.config/zsh/.iterm2_shell_integration.zsh
+
+.config/zsh/.iterm2/
+.config/zsh/.iterm2_shell_integration.zsh
