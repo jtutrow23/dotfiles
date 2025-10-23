@@ -1,21 +1,37 @@
-# mkcd: make directory and enter it
-mkcd() { mkdir -p -- "$1" && cd -- "$1"; }
-
-# extract: unpack common archive formats
-extract() {
-  local file="$1"
-  [[ -f "$file" ]] || { print -r -- "'$file' is not a file"; return 1; }
-  case "$file" in
-    *.tar.bz2|*.tbz2) tar xjf "$file" ;;
-    *.tar.gz|*.tgz)   tar xzf "$file" ;;
-    *.tar.xz)         tar xJf "$file" ;;
-    *.tar)            tar xf "$file" ;;
-    *.zip)            unzip -q "$file" ;;
-    *.7z)             7z x "$file" ;;
-    *.rar)            unrar x "$file" ;;
-    *)                print -r -- "'$file' has unknown format"; return 2 ;;
-  esac
+# --- Git helpers
+gclean() {
+  echo "🧹 Cleaning untracked files..."
+  git clean -fdX
+  echo "✅ Done."
 }
 
-# reload: reload zsh config with a green confirmation
-reload() { source "$ZDOTDIR/zshrc" && print -P "%F{green}🔁 Zsh reloaded%f"; }
+gpush() {
+  branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+  echo "⬆️  Pushing to origin/$branch..."
+  git push -u origin "$branch"
+}
+
+# --- fzf + zoxide navigators
+vfind() {
+  local file
+  file=$(fzf --preview 'bat --style=numbers --color=always {} | head -200') || return
+  [[ -n "$file" ]] && nvim "$file"
+}
+
+cdp() {
+  local dir
+  dir=$(zoxide query -l | fzf --height 40% --reverse --prompt="📁 Jump to> ") || return
+  [[ -n "$dir" ]] && cd "$dir" || return
+}
+
+# --- System utilities
+reload() {
+  echo "🔄 Reloading shell..."
+  exec zsh
+}
+
+flushdns() {
+  echo "🧠 Flushing DNS cache..."
+  sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder
+  echo "✅ DNS cache flushed."
+}
