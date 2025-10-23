@@ -1,12 +1,13 @@
 # ════════════════════════════════════════════════════════════════════════════════
 # 🍺 TAPS
 # ════════════════════════════════════════════════════════════════════════════════
-tap "homebrew/cask-versions"         # for -beta casks
+tap "homebrew/cask-versions"         # for alternates (no betas used)
 tap "koekeishiya/formulae"           # yabai/skhd utilities
 tap "vitorgalvao/tiny-scripts"       # macOS helpers
 
 # ════════════════════════════════════════════════════════════════════════════════
-# ⚙️ CORE LIBS & UTILITIES (OK with Znap setup)
+# ⚙️ CORE LIBS & UTILITIES
+# (Stable stack + practical extras)
 # ════════════════════════════════════════════════════════════════════════════════
 brew "ast-grep"
 brew "awscli"
@@ -34,8 +35,11 @@ brew "gnu-sed"
 brew "gnupg"
 brew "go"
 brew "jq"
+brew "lazygit"
+brew "luarocks"
+brew "mackup"
 brew "mas"
-brew "mise"                    # ← choose mise OR the *env tools below (see note)
+brew "mise"                 # choose mise OR *env tools (pyenv/nodenv/nvm)
 brew "mkcert"
 brew "neovim"
 brew "php"
@@ -61,21 +65,22 @@ brew "yt-dlp"
 brew "zoxide"
 brew "zsh"
 
-# Needed by your `extract()` function:
-brew "p7zip"                 # 7z
-brew "unar"                  # universal extractor (handles rar/zip/etc)
-# or: brew "unrar"
+# Archive helpers your extract() uses
+brew "p7zip"
+brew "unar"
 
-# ⚠️ Optional language managers (pick ONE approach)
-# If you keep mise, you usually DON'T need these:
-# brew "pyenv"
-# brew "nodenv"
-# brew "nvm"
+# Media/image pipeline (extras)
+brew "webp"
+brew "imagemagick"
+brew "jpegoptim"
+brew "gifsicle"
+brew "oxipng"
+brew "pillow"
 
 # ════════════════════════════════════════════════════════════════════════════════
-# 🖥️ TERMINALS & FONTS
+# 🖥️ TERMINALS & FONTS (stable)
 # ════════════════════════════════════════════════════════════════════════════════
-cask "iterm2-beta"                         # ← correct beta token
+cask "iterm2"                               # ← was iterm2-beta
 cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-fira-code-nerd-font"
@@ -88,6 +93,7 @@ cask "keyboard-maestro"
 cask "launchbar"
 cask "typinator"
 cask "numi"
+cask "popclip"
 
 # ════════════════════════════════════════════════════════════════════════════════
 # 🧭 SYSTEM UTILITIES
@@ -106,6 +112,8 @@ cask "tabtab"
 cask "dockdoor"
 cask "dockfix"
 cask "thelowtechguys-cling"
+cask "betterdisplay"
+cask "mediamate"
 
 # ════════════════════════════════════════════════════════════════════════════════
 # 🪟 WINDOW / DISPLAY / INPUT HELPERS
@@ -129,6 +137,8 @@ cask "cryptomator"
 cask "pearcleaner"
 cask "appcleaner"
 cask "disk-drill"
+cask "imazing"                               # keep stable
+# (Keka via MAS below to avoid duplicate install methods)
 
 # ════════════════════════════════════════════════════════════════════════════════
 # 🎥 MEDIA -- PLAY / CAPTURE / CONVERT / DOWNLOAD
@@ -151,6 +161,9 @@ cask "nordvpn"
 # ════════════════════════════════════════════════════════════════════════════════
 cask "git-credential-manager"
 cask "mist"
+# iTerm helpers (stable)
+cask "itermai"
+cask "itermbrowserplugin"
 
 # ════════════════════════════════════════════════════════════════════════════════
 # 🧠 WRITING / AI / CREATIVE UTILITIES
@@ -166,17 +179,21 @@ cask "customshortcuts"
 cask "clop"
 cask "alcove"
 cask "voiceink"
+cask "rewritebar"
+cask "fixkey"
+cask "gemini"
 
 # ════════════════════════════════════════════════════════════════════════════════
-# 🔐 LICENSED / PREMIUM SOFTWARE (beta where available)
+# 🔐 LICENSED / PREMIUM SOFTWARE (stable)
 # ════════════════════════════════════════════════════════════════════════════════
-cask "1password-beta"                      # ← correct beta token
-cask "1password-cli-beta"                  # ← correct beta token
+cask "1password"                            # ← was 1password-beta / @beta
+cask "1password-cli"                        # ← was 1password-cli-beta / @beta
 cask "airbuddy"
-cask "jordanbaird-ice"                     # (beta token may not exist reliably)
+cask "jordanbaird-ice"
 
 # ════════════════════════════════════════════════════════════════════════════════
-# 🛒 MAC APP STORE (unchanged)
+# 🛒 MAC APP STORE (unchanged; all with valid IDs)
+# Note: install via App Store UI if `mas` is flaky on Tahoe.
 # ════════════════════════════════════════════════════════════════════════════════
 mas "1Blocker",                                 id: 1365531024
 mas "1Password for Safari",                     id: 1569813296
@@ -255,3 +272,11 @@ mas "xReload",                                  id: 1588834516
 mas "xSearch",                                  id: 1579902068
 mas "YABA",                                     id: 6747272081
 mas "Yoink",                                    id: 457622435
+
+# Safe MAS extras (valid IDs)
+mas "Dynaper",                                  id: 1435296403
+mas "Notability",                               id: 360593530
+mas "Speedtest",                                id: 1153157709
+mas "Structured",                               id: 1499198946
+mas "Tot",                                      id: 1491071483
+mas "Prime Video",                              id: 545519333
