@@ -68,3 +68,15 @@ zsh/.iterm2_shell_integration.zsh
 # Misc
 # ──────────────────────────────
 *.icloud
+# Neovim runtime noise
+.config/nvim/lazy-lock.json
+.config/nvim_backup_*
+Documents/Configs/Mackup/
+
+# App configs we don't want in git
+.config/iterm2/
+.config/op/
+
+# Mackup: ignore all except the config file
+.config/mackup/*
+!.config/mackup/mackup.cfg
