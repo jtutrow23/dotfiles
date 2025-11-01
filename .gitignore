@@ -1,0 +1,9 @@
+zsh/.config/zsh/.zsh_sessions/
+zsh/.config/zsh/.zcompdump*
+**/.DS_Store
+ssh/*.key
+ssh/*.pem
+ssh/*.pub
+ssh/.ssh_repo_backup/
+alfred/Alfred.alfredpreferences/
+brew/Brewfile.*
