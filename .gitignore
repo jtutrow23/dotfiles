@@ -7,3 +7,5 @@ ssh/*.pub
 ssh/.ssh_repo_backup/
 alfred/Alfred.alfredpreferences/
 brew/Brewfile.*
+*.zwc
+ssh/.ssh/known_hosts*
