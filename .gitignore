@@ -9,3 +9,11 @@ alfred/Alfred.alfredpreferences/
 brew/Brewfile.*
 *.zwc
 ssh/.ssh/known_hosts*
+
+# Zsh noise
+**/.zsh_history
+**/*.zwc
+**/*.zwc.old
+
+# macOS junk
+.DS_Store

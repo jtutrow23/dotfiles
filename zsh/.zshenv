@@ -1,2 +1,2 @@
+# Set ZDOTDIR so all Zsh config lives in ~/.config/zsh
 export ZDOTDIR="$HOME/.config/zsh"
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/bin:/bin:/usr/sbin:/sbin"

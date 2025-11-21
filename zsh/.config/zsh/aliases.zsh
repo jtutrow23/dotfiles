@@ -1,2 +1,4 @@
-alias ll='ls -lah'
-alias ..='cd ..'
+alias ll="ls -lah"
+alias gs="git status"
+alias gp="git push"
+alias gl="git pull"
