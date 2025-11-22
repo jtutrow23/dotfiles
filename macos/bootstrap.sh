@@ -118,17 +118,6 @@ fi
 echo "✔️  Default shell step done"
 
 ################################################################################
-# 6. macOS SYSTEM TWEAKS (optional)
-################################################################################
-if [[ -x "$HOME/.dotfiles/macos/defaults.sh" ]]; then
-  echo "🛠 Applying macOS system defaults…"
-  "$HOME/.dotfiles/macos/defaults.sh"
-  echo "✔️  macOS defaults applied"
-else
-  echo "ℹ️  No macOS defaults script found (macos/defaults.sh is not executable or missing)."
-fi
-
-################################################################################
 # 7. FINISH
 ################################################################################
 echo "──────────────────────────────────────────"
