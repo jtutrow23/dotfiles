@@ -1,5 +1,6 @@
 zsh/.config/zsh/.zsh_sessions/
 zsh/.config/zsh/.zcompdump*
+zsh/.config/zsh/.zsh_history
 **/.DS_Store
 ssh/*.key
 ssh/*.pem
@@ -7,13 +8,3 @@ ssh/*.pub
 ssh/.ssh_repo_backup/
 alfred/Alfred.alfredpreferences/
 brew/Brewfile.*
-*.zwc
-ssh/.ssh/known_hosts*
-
-# Zsh noise
-**/.zsh_history
-**/*.zwc
-**/*.zwc.old
-
-# macOS junk
-.DS_Store

@@ -1,5 +1,5 @@
-# PATH updates
-export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export EDITOR="nano"
 
-# Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
