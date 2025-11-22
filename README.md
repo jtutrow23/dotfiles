@@ -1,30 +1,25 @@
-# Justin’s macOS dotfiles
+# 🧩 Justin’s Dotfiles
 
-Opinionated dotfiles for a clean, reproducible macOS setup:
-
-- Zsh with config in `~/.config/zsh` (via `ZDOTDIR`)
-- Plugin-managed shell using [znap](https://github.com/marlonrichert/zsh-snap)
-- Prompt via [starship](https://starship.rs/)
-- SSH configured for 1Password agent (optional)
-- Homebrew split into tiers (core / dev extras / apps)
-- macOS defaults script scaffolded but not forced
-
-This is meant for **fresh macOS installs** and for keeping one primary setup in sync over time.
+A clean, portable macOS setup built around Zsh, Znap, Homebrew, and reproducible machine bootstrapping.  
+Everything here is designed to make a fresh Mac fully configured in minutes.
 
 ---
 
-## Quick start
+## ⭐ Features
 
-Fresh machine, already have SSH access to GitHub and Homebrew not installed:
+- **Zsh powered** — fast startup, plugin-managed via [Znap](https://github.com/marlonrichert/zsh-snap)  
+- **Structured config** — all Zsh files live cleanly under `~/.config/zsh`  
+- **Homebrew bundle** — curated formulae & casks separated into logical groups  
+- **macOS defaults** script — applies UI/UX tweaks consistently  
+- **Starship prompt** — fast, minimal, cross-shell  
+- **Non-invasive** — everything symlinked using GNU Stow  
+- **Works with SSH or HTTPS** — installable even on machines without SSH keys
+
+---
+
+## 🚀 Quick Install (SSH-enabled machines)
 
 ```sh
-# 1. Install Homebrew (if you haven't yet)
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# 2. Clone dotfiles
 git clone git@github.com:jtutrow23/dotfiles.git ~/.dotfiles
-
-# 3. Run the bootstrap
 cd ~/.dotfiles
-chmod +x install.sh
-./install.sh
+./macos/bootstrap.sh
