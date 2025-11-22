@@ -350,7 +350,6 @@ cask "font-jetbrains-mono-nerd-font"
 cask "1password"
 cask "1password-cli"
 cask "airbuddy"
-cask "alcove"
 
 # ─── MAS (Mac App Store) ─────────────────────────────────────────────────────
 mas "1Blocker", id: 1365531024
