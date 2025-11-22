@@ -8,5 +8,3 @@ ssh/*.pub
 ssh/.ssh_repo_backup/
 alfred/Alfred.alfredpreferences/
 brew/Brewfile.*
-**/*.zwc
-**/*.zwc
