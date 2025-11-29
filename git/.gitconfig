@@ -1,0 +1,29 @@
+[core]
+	editor = nvim
+	pager = less -FRX
+
+[user]
+	name = Justin Tutrow
+	email = jtutrow23@gmail.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDYFP4VnR0ZR1OSlEczfm8qd5SRwLpnk6UqTWHT8ERts
+	# Replace this with your actual 1Password SSH public key if you want signing
+	# signingkey = ssh-ed25519 AAAAC3N...
+
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+
+[commit]
+	gpgsign = true
+
+[pull]
+	rebase = true
+
+[push]
+	default = current
+	autoSetupRemote = true
+
+[rebase]
+	autostash = true
