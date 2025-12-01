@@ -316,7 +316,7 @@ cask "jordanbaird-ice@beta"
 
 # Network / VPN
 cask "nordvpn"
-cask protonvpn
+cask "protonvpn"
 
 # Dev Tools / terminals / helpers
 cask "git-credential-manager"
