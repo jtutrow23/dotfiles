@@ -102,7 +102,6 @@ cask "font-jetbrains-mono-nerd-font"
 ########################################
 
 mas "1Blocker", id: 1365531024
-mas "1Password for Safari", id: 1569813296
 mas "Actions", id: 1586435171
 mas "Apple Configurator", id: 1037126344
 mas "Baking Soda", id: 1601151613
