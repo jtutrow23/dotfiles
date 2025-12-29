@@ -40,3 +40,13 @@
 	defaultBranch = main
 [pull]
 	rebase = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true
+[user]
+	name = Justin Tutrow	
+	email = jtutrow23@gmail.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGAZTMZLXFS6cb5JQ1qB9by/XQYaq1hKQLb307QTa+eX
