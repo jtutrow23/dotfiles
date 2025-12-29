@@ -1,6 +1,4 @@
-cask_args appdir: '/Applications'
-
-tap 'homebrew/bundle'
+cask_args appdir: "/Applications"
 
 brew 'atuin'
 brew 'cloudflared'
@@ -20,3 +18,79 @@ cask 'ghostty'
 cask 'handbrake-app'
 cask 'steam'
 cask 'transmission'
+
+########################################
+# Core CLI (minimal, stable)
+########################################
+
+brew "git"
+brew "gh"
+
+brew "coreutils"
+brew "gnu-sed"
+brew "grep"
+
+brew "curl"
+brew "wget"
+brew "jq"
+
+brew "fzf"
+brew "ripgrep"
+brew "fd"
+brew "bat"
+brew "eza"
+
+brew "tree"
+brew "tmux"
+
+########################################
+# Shell / Environment
+########################################
+
+brew "zsh"            # keep Homebrew zsh available, but not forced
+brew "starship"       # prompt (used via znap)
+brew "direnv"
+brew "zoxide"
+
+########################################
+# Language / Runtime Management
+########################################
+
+brew "mise"           # replaces pyenv, nodenv, rbenv
+brew "pipx"
+
+########################################
+# Security / Identity
+########################################
+
+brew "gnupg"
+brew "pinentry-mac"
+
+########################################
+# Networking / APIs
+########################################
+
+brew "awscli"
+
+########################################
+# Mac App Store CLI
+########################################
+
+brew "mas"
+
+########################################
+# GUI Apps (Casks)
+########################################
+
+cask "iterm2"
+cask "cleanshot"
+cask "rectangle-pro"
+cask "mac-mouse-fix"
+cask "istat-menus"
+
+########################################
+# Fonts
+########################################
+
+cask "font-jetbrains-mono-nerd-font"
+cask "font-fira-code-nerd-font"
