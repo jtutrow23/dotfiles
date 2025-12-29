@@ -1,2 +1,5 @@
 git/gitconfig.local.symlink
 Brewfile.lock.json
+
+# Zsh compiled files
+*.zwc
