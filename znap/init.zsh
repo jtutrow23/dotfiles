@@ -16,6 +16,28 @@ fi
 # Load Znap
 source "$ZNAP_DIR/znap.zsh"
 
-# Plugins (add/remove to taste)
+# --- plugins ---------------------------------------------------------------
+
+# Suggestions as you type
 znap source zsh-users/zsh-autosuggestions
+
+# Extra completion definitions (pairs well with your completion.zsh)
 znap source zsh-users/zsh-completions
+
+# Fast syntax highlighting (very popular, low drama)
+znap source zdharma-continuum/fast-syntax-highlighting
+
+# Better tab completion UX (predictive, menu-style)
+znap source marlonrichert/zsh-autocomplete
+
+# fzf-powered completion menu (optional but awesome)
+znap source Aloxaf/fzf-tab
+
+# --- small, safe defaults --------------------------------------------------
+
+# Autosuggestions: accept with → (right arrow)
+bindkey '→' autosuggest-accept 2>/dev/null || true
+
+# fzf-tab preview (safe; if fzf-tab isn’t loaded it does nothing)
+zstyle ':fzf-tab:*' fzf-command fzf
+zstyle ':fzf-tab:complete:*:*' fzf-preview 'ls -la --color=auto $realpath 2>/dev/null'
