@@ -16,7 +16,6 @@ brew 'yt-dlp'
 cask '1password'
 cask 'ghostty'
 cask 'handbrake-app'
-cask 'steam'
 cask 'transmission'
 
 ########################################
