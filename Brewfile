@@ -139,7 +139,6 @@ cask "textsniper"
 cask "thelowtechguys-cling"
 cask "transmission", args: { appdir: "/Applications" }
 cask "typinator"
-cask "updatest@beta"
 cask "vanilla"
 cask "voiceink"
 cask "yoink"
