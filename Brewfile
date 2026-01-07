@@ -1,5 +1,3 @@
-cask_args appdir: "/Applications"
-
 ########################################
 # Formulae
 ########################################
@@ -67,6 +65,7 @@ brew "zoxide"
 brew "zsh"
 brew "stripe/stripe-cli/stripe"
 brew "stripe/stripe-mock/stripe-mock"
+
 
 ########################################
 # Casks
@@ -143,11 +142,11 @@ cask "vanilla"
 cask "voiceink"
 cask "yoink"
 
+
 ########################################
 # Mac App Store apps (mas)
 ########################################
 mas "1Blocker", id: 1365531024
-mas "1Password for Safari", id: 1569813296
 mas "Actions", id: 1586435171
 mas "Apple Configurator", id: 1037126344
 mas "Baking Soda", id: 1601151613

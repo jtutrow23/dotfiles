@@ -6,7 +6,6 @@
 #
 #   c <tab>
 #
-# ...to autocomplete on all of your projects in the directories specified in
 # `functions/_c`. Typically I'm using it like:
 #
 #    c holm<tab>/bo<tab>

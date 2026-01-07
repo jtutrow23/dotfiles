@@ -33,6 +33,8 @@
         default = simple
 [credential]
 	helper = osxkeychain
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
 [diff "spaceman-diff"]
   command = /opt/homebrew/bin/spaceman-diff
 
@@ -49,4 +51,6 @@
 [user]
 	name = Justin Tutrow	
 	email = jtutrow23@gmail.com
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGAZTMZLXFS6cb5JQ1qB9by/XQYaq1hKQLb307QTa+eX
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKCxFF1Z2ABKbmfx8a9vZb5FSsp4BKhmpCfZAHYq/ojB
+[credential "https://dev.azure.com"]
+	useHttpPath = true

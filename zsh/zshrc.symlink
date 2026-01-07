@@ -1,41 +1,60 @@
-# shortcut to this dotfiles path is $ZSH
-export ZSH=$HOME/.dotfiles
+# -------------------------------------------------------------------
+# Base paths
+# -------------------------------------------------------------------
 
-# your project folder that we can `c [tab]` to
-export PROJECTS=~/Code
+# Root of your dotfiles repo
+export ZSH="$HOME/.dotfiles"
 
-# Stash your environment variables in ~/.localrc. This means they'll stay out
-# of your main dotfiles repository (which may be public, like this one), but
-# you'll have access to them in your scripts.
-if [[ -a ~/.localrc ]]
-then
-  source ~/.localrc
+# Project folder for helper functions like `c <TAB>`
+export PROJECTS="$HOME/Code"
+
+# Local, untracked overrides (API keys, machine-specific tweaks, etc.)
+if [[ -f "$HOME/.localrc" ]]; then
+  source "$HOME/.localrc"
 fi
 
-# all of our zsh files
-typeset -U config_files
-config_files=($ZSH/**/*.zsh)
+# -------------------------------------------------------------------
+# Load topic files from $ZSH
+# -------------------------------------------------------------------
 
-# load the path files
-for file in ${(M)config_files:#*/path.zsh}
-do
-  source $file
+# Collect all .zsh files under $ZSH, unique & sorted
+typeset -aU config_files
+config_files=("$ZSH"/**/*.zsh)
+
+# 1. PATH setup files first (so later files can rely on PATH)
+for file in ${(M)config_files:#*/path.zsh}; do
+  source "$file"
 done
 
-# load everything but the path and completion files
-for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
-do
-  source $file
+# 2. Core config: everything except path.zsh & completion.zsh
+for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}; do
+  source "$file"
 done
 
-# initialize autocomplete here, otherwise functions won't be loaded
-autoload -U compinit
-compinit
+# 3. Initialize completion system (uses cache if available)
+autoload -Uz compinit
+# -C: use cached .zcompdump when possible for faster startup
+compinit -C
 
-# load every completion after autocomplete loads
-for file in ${(M)config_files:#*/completion.zsh}
-do
-  source $file
+# 4. Topic-specific completion tweaks
+for file in ${(M)config_files:#*/completion.zsh}; do
+  source "$file"
 done
 
 unset config_files
+
+# -------------------------------------------------------------------
+# Plugin manager: zinit
+# -------------------------------------------------------------------
+
+export ZINIT_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/zinit"
+
+if [[ -f "$ZINIT_HOME/bin/zinit.zsh" ]]; then
+  source "$ZINIT_HOME/bin/zinit.zsh"
+
+  # Suggestions as you type
+  zinit light zsh-users/zsh-autosuggestions
+
+  # Syntax highlighting (MUST be last among plugins that touch the line editor)
+  zinit light zsh-users/zsh-syntax-highlighting
+fi
