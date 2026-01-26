@@ -24,3 +24,13 @@
 	ci = commit
 	last = log -1 --stat
 	lg = log --oneline --decorate --graph --max-count=20
+[rerere]
+	enabled = true
+[core]
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	side-by-side = false
+	line-numbers = false
