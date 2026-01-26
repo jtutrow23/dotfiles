@@ -10,5 +10,4 @@
 [commit]
 	gpgsign = true
 [credential]
-	helper = 
 	helper = git-credential-manager

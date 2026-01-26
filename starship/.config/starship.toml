@@ -1,0 +1,21 @@
+# Minimal, explicit prompt. No icons/themes, no extra modules.
+add_newline = false
+
+format = "$directory$git_branch$git_status$character"
+
+[directory]
+style = "blue"
+truncation_length = 3
+truncate_to_repo = true
+
+[git_branch]
+format = " [$branch]($style)"
+style = "purple"
+
+[git_status]
+format = " [$all_status$ahead_behind]($style)"
+style = "purple"
+
+[character]
+success_symbol = "% "
+error_symbol = "% "
