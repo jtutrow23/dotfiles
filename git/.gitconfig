@@ -1,0 +1,14 @@
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[user]
+	email = jtutrow23@gmail.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIInOdAared3U7yl0rrxRC9Op3XHdcnNzz7EzkomCUAlO
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true
+[credential]
+	helper = 
+	helper = git-credential-manager
