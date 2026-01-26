@@ -1,7 +1,35 @@
+# mise (runtime manager)
 eval "$(mise activate zsh)"
 
+# ---- completions (minimal, Homebrew-aware) ----
+typeset -U fpath  # de-dup entries
+
+# Homebrew completions (Apple Silicon)
+fpath=(
+  /opt/homebrew/share/zsh-completions
+  /opt/homebrew/share/zsh/site-functions
+  $fpath
+)
+
+# Remove Intel-era completions path
+fpath=(${fpath:#"/usr/local/share/zsh/site-functions"})
+
+autoload -Uz compinit
+compinit -C
+
+# zsh autosuggestions (inline suggestions)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+if [ -r /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+  source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
+# direnv (does nothing unless an .envrc exists)
+eval "$(direnv hook zsh)"
+
 # fzf (completion only; no default keybindings)
-source "$(brew --prefix)/opt/fzf/shell/completion.zsh"
+if [ -r /opt/homebrew/opt/fzf/shell/completion.zsh ]; then
+  source /opt/homebrew/opt/fzf/shell/completion.zsh
+fi
 
 # fzf (explicit keybindings; no defaults)
 fzf_cmd_files() {
@@ -39,5 +67,7 @@ fzf_history_search() {
 zle -N fzf_history_search
 bindkey '^R' fzf_history_search
 
-# starship prompt
-eval "$(starship init zsh)"
+# starship prompt (interactive shells only)
+if [[ -o interactive ]]; then
+  eval "$(starship init zsh)"
+fi
