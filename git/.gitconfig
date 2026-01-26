@@ -11,3 +11,16 @@
 	gpgsign = true
 [credential]
 	helper = git-credential-manager
+[init]
+	defaultBranch = main
+[pull]
+	ff = only
+[fetch]
+	prune = true
+[alias]
+	st = status
+	br = branch
+	co = checkout
+	ci = commit
+	last = log -1 --stat
+	lg = log --oneline --decorate --graph --max-count=20

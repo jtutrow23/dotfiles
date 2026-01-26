@@ -17,5 +17,5 @@ format = " [$all_status$ahead_behind]($style)"
 style = "purple"
 
 [character]
-success_symbol = "% "
-error_symbol = "% "
+success_symbol = "❯ "
+error_symbol = "❯ "
