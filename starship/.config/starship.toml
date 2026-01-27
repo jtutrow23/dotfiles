@@ -1,20 +1,27 @@
-# Minimal, explicit prompt. No icons/themes, no extra modules.
 add_newline = false
 
-format = "$directory$git_branch$git_status$character"
+format = "📁 $directory$git_branch$git_status $nodejs$python $character"
 
 [directory]
-style = "blue"
+style = "none"
 truncation_length = 3
 truncate_to_repo = true
 
 [git_branch]
-format = " [$branch]($style)"
-style = "purple"
+format = "  $branch"
+style = "none"
 
 [git_status]
-format = " [$all_status$ahead_behind]($style)"
-style = "purple"
+format = " $all_status$ahead_behind"
+style = "none"
+
+[nodejs]
+format = "  $version"
+style = "none"
+
+[python]
+format = "  $version"
+style = "none"
 
 [character]
 success_symbol = "❯ "
