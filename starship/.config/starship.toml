@@ -1,28 +1,53 @@
+# =========================
+# Starship — dark, classy, minimal (v1.24 compatible)
+# =========================
+
 add_newline = false
+format = "$directory$git_branch$git_status$character"
 
-format = "📁 $directory$git_branch$git_status $nodejs$python $character"
-
+# -------------------------
+# Directory
+# -------------------------
 [directory]
-style = "none"
+style = "fg:#7aa2f7"        # Tokyonight blue
+format = "[$path]($style) "
 truncation_length = 3
 truncate_to_repo = true
 
+# Home icon only
+[directory.substitutions]
+"~" = ""
+
+# -------------------------
+# Git
+# -------------------------
 [git_branch]
-format = "  $branch"
-style = "none"
+symbol = ""
+style = "fg:#bb9af7"        # Tokyonight purple
+format = "[$symbol $branch]($style) "
 
 [git_status]
-format = " $all_status$ahead_behind"
-style = "none"
+style = "fg:#bb9af7"
+format = "[$staged$modified$deleted$renamed$conflicted$stashed$ahead_behind]($style) "
 
-[nodejs]
-format = "  $version"
-style = "none"
+# Hide untracked noise
+untracked = ""
 
-[python]
-format = "  $version"
-style = "none"
+staged     = "+"
+modified   = "!"
+deleted    = "✘"
+renamed    = "»"
+conflicted = "≠"
+stashed    = "*"
 
+ahead  = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+up_to_date = ""
+
+# -------------------------
+# Prompt character
+# -------------------------
 [character]
-success_symbol = "❯ "
-error_symbol = "❯ "
+success_symbol = "[❯](fg:#9ece6a) "
+error_symbol   = "[❯](fg:#f7768e) "
