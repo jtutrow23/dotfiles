@@ -1,8 +1,7 @@
 tap "sozercan/repo"
 tap "stripe/stripe-cli"
 tap "stripe/stripe-mock"
-tap "updatest/tap", "https://github.com/updatest/tap.git"
-tap "xpipe-io/tap"
+
 brew "awscli"
 brew "bash"
 brew "bat"
@@ -57,8 +56,9 @@ brew "zoxide"
 brew "zsh"
 brew "stripe/stripe-cli/stripe"
 brew "stripe/stripe-mock/stripe-mock"
+
 cask "1password"
-cask "1password@cli"
+cask "1password-cli"
 cask "alfred"
 cask "antinote"
 cask "appcleaner"
@@ -98,7 +98,8 @@ cask "vanilla"
 cask "voiceink"
 cask "wispr-flow"
 cask "yoink"
-mas "1Password for Safari", id: 0
+
+mas "1Password for Safari", id: 1569813296
 mas "Apple Configurator", id: 1037126344
 mas "Clean Links", id: 6747395062
 mas "Dropover", id: 1355679052
@@ -123,4 +124,3 @@ mas "Things", id: 904280696
 mas "Transloader", id: 572281534
 mas "Vidimote", id: 1585702412
 mas "Vinegar", id: 1591303229
-mas "Yoink 2", id: 457622435
