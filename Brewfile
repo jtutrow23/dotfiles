@@ -97,7 +97,6 @@ cask "updatest"
 cask "vanilla"
 cask "voiceink"
 cask "wispr-flow"
-cask "yoink"
 
 mas "1Password for Safari", id: 1569813296
 mas "Apple Configurator", id: 1037126344
