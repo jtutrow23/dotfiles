@@ -1,8 +1,5 @@
 # taps
 tap "homebrew/bundle"
-tap "oven-sh/bun"
-tap "stripe/stripe-cli"
-tap "stripe/stripe-mock"
 tap "updatest/tap", "https://github.com/updatest/tap.git"
 
 # cli essentials
