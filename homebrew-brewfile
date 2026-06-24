@@ -50,15 +50,6 @@ brew "yt-dlp"
 brew "zoxide"
 brew "zsh"
 
-# language runtimes / package tools
-brew "oven-sh/bun/bun"
-brew "python@3.14"
-brew "python-tk@3.14"
-
-# vendor tools
-brew "stripe/stripe-cli/stripe"
-brew "stripe/stripe-mock/stripe-mock"
-
 # media / image
 brew "webp"
 brew "imagemagick"
@@ -88,7 +79,6 @@ cask "keka"
 cask "rectangle-pro"
 cask "shottr"
 cask "textsniper"
-cask "yoink"
 
 # utility / power-user apps
 cask "bloom"
