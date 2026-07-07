@@ -3,7 +3,6 @@ tap "homebrew/bundle"
 tap "oven-sh/bun", trusted: true
 tap "stripe/stripe-cli", trusted: true
 tap "stripe/stripe-mock", trusted: true
-tap "updatest/tap", "https://github.com/updatest/tap.git"
 
 # CLI
 brew "awscli"
