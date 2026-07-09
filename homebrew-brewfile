@@ -119,13 +119,6 @@ brew "stow"
 cask "font-fira-code-nerd-font"
 cask "font-jetbrains-mono-nerd-font"
 
-# -----------------------------------------------------------------------------
-# Passwords, privacy, and security
-# -----------------------------------------------------------------------------
-
-cask "1password"
-cask "1password-cli"
-cask "adguard"
 
 # -----------------------------------------------------------------------------
 # Terminal, development, and package management
@@ -133,7 +126,6 @@ cask "adguard"
 
 cask "ghostty"
 cask "git-credential-manager"
-cask "zed"
 cask "chatgpt"
 cask "cork"
 cask "taphouse"
@@ -159,7 +151,7 @@ cask "wispr-flow"
 # Window, display, menu bar, and input utilities
 # -----------------------------------------------------------------------------
 
-cask "airbuddy"
+# cask "airbuddy" # skipped: vendor download returns 403
 cask "alcove"
 cask "bartender"
 cask "betterdisplay"
@@ -185,10 +177,7 @@ cask "imazing"
 cask "keka"
 cask "mountain-duck"
 cask "thaw"
-cask "thelowtechguys-cling"
 cask "updatest"
-cask "yoink"
-
 # -----------------------------------------------------------------------------
 # Screenshots, media, and image tools
 # -----------------------------------------------------------------------------
@@ -210,7 +199,6 @@ cask "shottr"
 # Safari extensions and web utilities
 # -----------------------------------------------------------------------------
 
-mas "1Password for Safari", id: 1569813296
 mas "Hush", id: 1544743900
 mas "Keyword Search", id: 1558453954
 mas "Noir", id: 1592917505
@@ -232,7 +220,7 @@ mas "BarMarks", id: 6739710035
 mas "DeskMinder", id: 6740942938
 mas "Dropover", id: 1355679052
 mas "Folder Peek", id: 1615988943
-mas "Gestimer", id: 6446206067
+mas "Gestimer", id: 6447125648
 mas "GoodLinks", id: 1474335294
 mas "Hand Mirror", id: 1502839586
 mas "Klack", id: 6446206067
@@ -262,7 +250,6 @@ mas "Transloader", id: 572281534
 
 mas "Image2Icon", id: 992115977
 mas "Infuse", id: 1136220934
-mas "Numbers", id: 409203825
 mas "Offloader", id: 6749336975
 mas "Pixelmator Pro", id: 1289583905
 mas "Vidimote", id: 1585702412
