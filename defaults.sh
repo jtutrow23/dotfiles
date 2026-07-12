@@ -97,7 +97,6 @@ defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
 # Disable crash reporter
 defaults write com.apple.CrashReporter DialogType -string none
-
-sudo spctl --master-disabledefaults write com.apple.CrashReporter DialogType -string none
+defaults write com.apple.CrashReporter DialogType -string none
 
 sudo spctl --master-disable
