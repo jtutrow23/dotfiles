@@ -1,6 +1,6 @@
 # Apple Silicon macOS Brewfile
 # Standard Homebrew prefix: /opt/homebrew
-# Install with: brew bundle --file=~/Brewfile
+# Install with: brew bundle --file=~/.dotfiles/homebrew-brewfile
 
 # -----------------------------------------------------------------------------
 # Taps
