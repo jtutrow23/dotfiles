@@ -126,7 +126,6 @@ cask "font-jetbrains-mono-nerd-font"
 
 cask "1Password-cli@beta"
 cask "1Password@beta"
-cask "ghostty"
 cask "git-credential-manager"
 cask "chatgpt"
 cask "cork"
@@ -137,7 +136,6 @@ cask "taphouse"
 # -----------------------------------------------------------------------------
 
 cask "alfred"
-cask "raycast"
 cask "antinote"
 cask "bloom"
 cask "keyboard-maestro"
