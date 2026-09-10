@@ -124,8 +124,8 @@ cask "font-jetbrains-mono-nerd-font"
 # Terminal, development, and package management
 # -----------------------------------------------------------------------------
 
-cask "1Password-cli@beta"
-cask "1Password@beta"
+cask "1Password-cli"
+cask "1Password"
 cask "git-credential-manager"
 cask "chatgpt"
 cask "cork"
@@ -160,7 +160,7 @@ cask "istat-menus"
 cask "lunar"
 cask "mac-mouse-fix"
 cask "mediamate"
-cask "notchnook"
+# cask "notchnook"
 cask "rectangle-pro"
 cask "swish"
 
