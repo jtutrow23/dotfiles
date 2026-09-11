@@ -27,6 +27,15 @@ defaults write com.apple.dock orientation -string left
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock showhidden -bool true
 
+## Always show hidden files in Finder
+
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
+## Hide macOS "Last login" message
+
+touch ~/.hushlogin
+
+
 # Disable to show recents, and light-dot of running apps
 defaults write com.apple.dock show-recents -bool false
 defaults write com.apple.dock show-process-indicators -bool false
