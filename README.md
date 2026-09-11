@@ -12,7 +12,7 @@ sheldon/plugins.toml         Zsh plugins
 starship/starship.toml       Catppuccin Powerline prompt
 ghostty/config.ghostty       Ghostty terminal configuration
 mise/config.toml             Global Node/Python versions
-docs/terminal-setup.md       Full terminal rebuild guide
+docs/terminal-setup.md       Defaults, rebuild, apply, verify and rollback guide
 docs/developer-tools.md      Runtime, Git and local-dev notes
 docs/macos-preferences.md    Finder and login-banner preferences
 ```

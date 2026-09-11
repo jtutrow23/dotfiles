@@ -49,8 +49,8 @@ gh auth status
 Set your identity on a new machine:
 
 ```bash
-git config --global user.name "Justin Tutrow"
-git config --global user.email "jtutrow23@gmail.com"
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
 git config --global init.defaultBranch main
 ```
 
