@@ -1,12 +1,10 @@
 # =============================================================================
 # Apple Silicon macOS Brewfile
+# Install: brew bundle --file=~/.dotfiles/homebrew-brewfile
 # =============================================================================
 
-# Install:
-#   brew bundle --file=~/.dotfiles/homebrew-brewfile
-
 # -----------------------------------------------------------------------------
-# Shell, terminal, and navigation
+# Shell and terminal
 # -----------------------------------------------------------------------------
 
 brew "bash"
@@ -17,6 +15,11 @@ brew "fzf"
 brew "zoxide"
 brew "direnv"
 brew "tmux"
+
+# -----------------------------------------------------------------------------
+# CLI utilities
+# -----------------------------------------------------------------------------
+
 brew "bottom"
 brew "dust"
 brew "eza"
@@ -27,23 +30,25 @@ brew "tree"
 brew "watch"
 brew "yazi"
 
-# -----------------------------------------------------------------------------
-# Core command-line, networking, and security tools
-# -----------------------------------------------------------------------------
-
-brew "awscli"
-brew "cloudflared"
 brew "coreutils"
 brew "gnu-sed"
 brew "grep"
 brew "wget"
+
 brew "jq"
 brew "yq"
+
+# -----------------------------------------------------------------------------
+# Networking, cloud, and security
+# -----------------------------------------------------------------------------
+
+brew "awscli"
+brew "cloudflared"
 brew "gnupg"
 brew "pinentry-mac"
 
 # -----------------------------------------------------------------------------
-# Git and repository tools
+# Git and repositories
 # -----------------------------------------------------------------------------
 
 brew "git"
@@ -54,25 +59,14 @@ brew "git-filter-repo"
 brew "lazygit"
 
 # -----------------------------------------------------------------------------
-# Runtime and Python tooling
+# Development runtimes and tooling
 # -----------------------------------------------------------------------------
-#
-# Node, Python, Bun and PHP are intentionally NOT installed by Homebrew.
-# mise owns language runtimes so global/project versions don't conflict.
-#
-# Example:
-#   mise use -g node@lts
-#   mise use -g python@3.14
-#   mise use -g bun@latest
-#   mise use -g php@latest
-#
+
 brew "mise"
-# Fast standalone Python package/project tooling.
-# Prefer this over Homebrew pipx + Homebrew Python.
 brew "uv"
 
 # -----------------------------------------------------------------------------
-# Databases and local development services
+# Databases and local services
 # -----------------------------------------------------------------------------
 
 brew "postgresql@17"
@@ -82,7 +76,7 @@ brew "stripe-cli"
 brew "stripe-mock"
 
 # -----------------------------------------------------------------------------
-# Media, image, and download tools
+# Media and image tools
 # -----------------------------------------------------------------------------
 
 brew "ffmpeg"
@@ -103,28 +97,25 @@ brew "yt-dlp"
 
 brew "mas"
 
+
 # =============================================================================
 # Casks
 # =============================================================================
-# -----------------------------------------------------------------------------
-# Fonts
-# -----------------------------------------------------------------------------
-
-# Primary terminal font used by Ghostty + Starship.
-cask "font-meslo-lg-nerd-font"
 
 # -----------------------------------------------------------------------------
-# Terminal, development, and package management
+# Terminal and development
 # -----------------------------------------------------------------------------
 
 cask "ghostty"
+cask "font-meslo-lg-nerd-font"
+
 cask "1password"
 cask "1password-cli"
 cask "chatgpt"
 cask "taphouse"
 
 # -----------------------------------------------------------------------------
-# Launchers, productivity, and text tools
+# Productivity
 # -----------------------------------------------------------------------------
 
 cask "alfred"
@@ -136,10 +127,8 @@ cask "voiceink"
 cask "wispr-flow"
 
 # -----------------------------------------------------------------------------
-# Window, display, menu bar, and input utilities
+# Window, display, and input
 # -----------------------------------------------------------------------------
-# Vendor download currently unsuitable for Brewfile automation.
-# cask "airbuddy"
 
 cask "betterdisplay"
 cask "displaybuddy"
@@ -148,7 +137,7 @@ cask "mac-mouse-fix"
 cask "swish"
 
 # -----------------------------------------------------------------------------
-# Files, storage, automation, and system maintenance
+# Files, storage, and system utilities
 # -----------------------------------------------------------------------------
 
 cask "appcleaner"
@@ -162,7 +151,7 @@ cask "thaw"
 cask "updatest"
 
 # -----------------------------------------------------------------------------
-# Screenshots, media, and image tools
+# Screenshots and media
 # -----------------------------------------------------------------------------
 
 cask "cleanshot"
@@ -171,14 +160,14 @@ cask "iina"
 cask "permute"
 cask "shottr"
 
+
 # =============================================================================
 # Mac App Store
-# =============================================================================
-#
 # Sign in to the Mac App Store before running brew bundle.
 # =============================================================================
+
 # -----------------------------------------------------------------------------
-# Safari extensions and web utilities
+# Safari extensions
 # -----------------------------------------------------------------------------
 
 mas "Noir", id: 1592917505
@@ -192,7 +181,7 @@ mas "Vinegar", id: 1591303229
 mas "Wipr", id: 1662217862
 
 # -----------------------------------------------------------------------------
-# Productivity, organization, and workflow
+# Productivity and workflow
 # -----------------------------------------------------------------------------
 
 mas "DeskMinder", id: 6740942938
@@ -213,7 +202,7 @@ mas "Things", id: 904280696
 mas "Transloader", id: 572281534
 
 # -----------------------------------------------------------------------------
-# Creative, media, and document apps
+# Media
 # -----------------------------------------------------------------------------
 
 mas "Infuse", id: 1136220934
@@ -221,7 +210,7 @@ mas "Offloader", id: 6749336975
 mas "Vidimote", id: 1585702412
 
 # -----------------------------------------------------------------------------
-# Apple and miscellaneous utilities
+# Apple and utilities
 # -----------------------------------------------------------------------------
 
 mas "Apple Configurator", id: 1037126344
