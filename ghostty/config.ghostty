@@ -1,0 +1,20 @@
+font-family = MesloLGS Nerd Font
+font-size = 14
+
+theme = Catppuccin Mocha
+
+window-padding-x = 10
+window-padding-y = 8
+window-padding-balance = true
+
+macos-titlebar-style = transparent
+
+background-opacity = 0.96
+background-blur = 20
+
+window-inherit-font-size = true
+window-inherit-working-directory = true
+tab-inherit-working-directory = true
+split-inherit-working-directory = true
+
+scrollback-limit = 100000
