@@ -126,5 +126,3 @@ zstyle ':completion:*:git-checkout:*' sort false
 # ── Starship ─────────────────────────────────────────────────
 
 eval "$(starship init zsh)"
-
-
