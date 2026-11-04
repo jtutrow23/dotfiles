@@ -1,6 +1,10 @@
 # =============================================================================
 # Apple Silicon macOS Brewfile
-# Install: brew bundle --file=~/.dotfiles/homebrew-brewfile
+# Install:
+#   brew bundle --file="$HOME/.dotfiles/homebrew-brewfile"
+# =============================================================================
+# =============================================================================
+# FORMULAE
 # =============================================================================
 # -----------------------------------------------------------------------------
 # Shell and terminal
@@ -17,6 +21,7 @@ brew "tmux"
 # CLI utilities
 # -----------------------------------------------------------------------------
 brew "bottom"
+brew "btop"
 brew "dust"
 brew "eza"
 brew "bat"
@@ -31,6 +36,7 @@ brew "grep"
 brew "wget"
 brew "jq"
 brew "yq"
+brew "topgrade"
 # -----------------------------------------------------------------------------
 # Networking, cloud, and security
 # -----------------------------------------------------------------------------
@@ -48,7 +54,10 @@ brew "git-extras"
 brew "git-filter-repo"
 brew "lazygit"
 # -----------------------------------------------------------------------------
-# Development runtimes and tooling
+# Development tooling
+#
+# mise owns language runtimes such as Node, Python, PHP, and Bun.
+# uv handles modern Python package/project tooling.
 # -----------------------------------------------------------------------------
 brew "mise"
 brew "uv"
@@ -79,57 +88,83 @@ brew "yt-dlp"
 # -----------------------------------------------------------------------------
 brew "mas"
 # =============================================================================
-# Casks
+# CASKS
 # =============================================================================
 # -----------------------------------------------------------------------------
 # Terminal and development
 # -----------------------------------------------------------------------------
 cask "ghostty"
 cask "font-meslo-lg-nerd-font"
+# Optional extra development fonts
+cask "font-fira-code-nerd-font"
+cask "font-jetbrains-mono-nerd-font"
 cask "1password"
 cask "1password-cli"
 cask "chatgpt"
+cask "codex"
+cask "git-credential-manager"
+cask "cork"
 cask "taphouse"
 # -----------------------------------------------------------------------------
-# Productivity
+# Productivity, launchers, notes, and text
 # -----------------------------------------------------------------------------
 cask "alfred"
 cask "antinote"
 cask "bloom"
+cask "coteditor"
 cask "numi"
 cask "popclip"
+cask "maccy"
+cask "openin"
+cask "rewritebar"
+cask "textsniper"
 cask "voiceink"
 cask "wispr-flow"
 # -----------------------------------------------------------------------------
-# Window, display, and input
+# Window, display, menu bar, notch, and input
 # -----------------------------------------------------------------------------
+cask "alcove"
+cask "bartender"
 cask "betterdisplay"
 cask "displaybuddy"
 cask "istat-menus"
+cask "lunar"
 cask "mac-mouse-fix"
+cask "mediamate"
+cask "notchnook"
+cask "rectangle-pro"
 cask "swish"
 # -----------------------------------------------------------------------------
-# Files, storage, and system utilities
+# Files, storage, automation, and system utilities
 # -----------------------------------------------------------------------------
 cask "appcleaner"
 cask "cleanmymac"
+cask "cleanmymac-cli"
 cask "disk-drill"
+cask "droppy"
+cask "fmail3"
 cask "folder-preview-pro"
 cask "hazel"
+cask "hush"
+cask "image2icon"
 cask "imazing"
+cask "keka"
+cask "keyboard-maestro"
 cask "mountain-duck"
 cask "thaw"
 cask "updatest"
 # -----------------------------------------------------------------------------
-# Screenshots and media
+# Screenshots, images, and media
 # -----------------------------------------------------------------------------
 cask "cleanshot"
+cask "clop"
 cask "downie"
 cask "iina"
 cask "permute"
 cask "shottr"
 # =============================================================================
-# Mac App Store
+# MAC APP STORE
+#
 # Sign in to the Mac App Store before running brew bundle.
 # =============================================================================
 # -----------------------------------------------------------------------------
