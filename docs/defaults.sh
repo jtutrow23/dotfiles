@@ -48,10 +48,7 @@ fi
 # -----------------------------------------------------------------------------
 # Optional settings: --unsafe
 # -----------------------------------------------------------------------------
-# WARNING: disables the listed quarantine and disk image verification settings.
-# The supplied CrashReporter command had no visible string value; use "".
-# No Gatekeeper change was included in the supplied commands.
-if "$UNSAFE"; then
+
   status 'Applying --unsafe settings'
 
   defaults write com.apple.LaunchServices LSQuarantine -bool false
@@ -61,7 +58,6 @@ if "$UNSAFE"; then
   defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
   defaults write com.apple.CrashReporter DialogType -string ''
-fi
 
 # -----------------------------------------------------------------------------
 # Optional Homebrew and Mac App Store maintenance: --update
